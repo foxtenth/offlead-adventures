@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offlead Adventures | Ultimate Dog Day Outs</title>
+    <style>
+        /* --- COLOR PALETTE & VARIABLES --- */
+        :root {
+            --navy-blue: #111d2a;
+            --olive-green: #677843;
+            --teal-water: #5c8f8e;
+            --light-bg: #f9faf8;
+            --white: #ffffff;
+            --text-dark: #333333;
+            --text-light: #f4f4f4;
+        }
+
+        /* --- GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3 {
+            color: var(--navy-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 { font-size: 3rem; line-height: 1.2; }
+        h2 { font-size: 2.2rem; text-align: center; margin-bottom: 40px; }
+        
+        p { margin-bottom: 20px; font-size: 1.1rem; color: #555; }
+
+        /* --- NAVIGATION --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            max-height: 80px; /* Adjusts logo size */
+            height: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li a {
+            font-weight: 600;
+            color: var(--navy-blue);
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-links li a:hover {
+            color: var(--olive-green);
+        }
+
+        .btn {
+            background-color: var(--olive-green);
+            color: var(--white) !important;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: var(--teal-water);
+            transform: translateY(-2px);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(rgba(17, 29, 42, 0.8), rgba(103, 120, 67, 0.8)), url('https://images.unsplash.com/photo-1544568100-847a948585b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 120px 20px;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            color: var(--text-light);
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+
+        .hero .tagline {
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #d1dfb6;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .hero .btn {
+            background-color: var(--teal-water);
+            font-size: 1.1rem;
+            padding: 14px 32px;
+        }
+
+        .hero .btn:hover {
+            background-color: var(--white);
+            color: var(--navy-blue) !important;
+        }
+
+        /* --- INTRO SECTION --- */
+        .intro-section {
+            max-width: 900px;
+            margin: 80px auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .intro-section h2 {
+            color: var(--olive-green);
+        }
+
+        /* --- SERVICES CARDS --- */
+        .services-section {
+            background-color: var(--white);
+            padding: 80px 20px;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: var(--light-bg);
+            border-radius: 12px;
+            padding: 40px 30px;
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+            border-bottom: 4px solid var(--teal-water);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--navy-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        footer p {
+            color: #999;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            .hero {
+                padding: 80px 20px;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="MAIN_TEXT.png" alt="Offlead Adventures Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#adventures">Our Adventures</a></li>
+                <li><a href="#contact" class="btn">Book a Day Out</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero">
+        <span class="tagline">Explore. Play. Return Happy.</span>
+        <h1>The Ultimate Off-Lead Day Out</h1>
+        <p>We take your dog on full-day wilderness tours and off-lead adventures, ensuring they get the exercise, socialization, and nature they crave while you focus on your day.</p>
+        <a href="#contact" class="btn">Schedule an Adventure</a>
+    </section>
+
+    <section id="about" class="intro-section">
+        <h2>More Than Just a Dog Walk</h2>
+        <p>At <strong>Offlead Adventures</strong>, we believe dogs are happiest when they are exploring the great outdoors. A quick walk around the block isn't always enough.</p>
+        <p>As dedicated canine tour guides, we pick up your dog and take them to safe, expansive environments—from rolling green hills to secluded woodlands. They spend hours running off-lead in a supervised, small-pack environment, allowing them to truly act like dogs.</p>
+    </section>
+
+    <section id="adventures" class="services-section">
+        <h2>Our Day Out Packages</h2>
+        <div class="services-container">
+            <div class="card">
+                <div class="card-icon">🌲</div>
+                <h3>Wilderness Day Tours</h3>
+                <p>Full-day excursions to safe, rural locations. We explore forests, hills, and safe water spots, giving your dog hours of off-lead freedom.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">🐾</div>
+                <h3>Pack Socialization</h3>
+                <p>We carefully curate small groups of compatible dogs. Your dog will build confidence, learn healthy play, and make lifelong furry friends.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🚐</div>
+                <h3>Door-to-Door Chauffeur</h3>
+                <p>You don't have to lift a finger. We collect your dog in our safe, air-conditioned vehicle in the morning and return them happy and tired.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div style="margin-bottom: 20px;">
+            <h3>Ready for an adventure?</h3>
+            <p style="color: #ccc; margin-bottom: 15px;">Contact us today to arrange a meet-and-greet.</p>
+            <a href="mailto:hello@offleadadventures.com" class="btn" style="background-color: var(--teal-water);">Email Us</a>
+        </div>
+        <hr style="border-color: #333; margin: 30px 0;">
+        <p>&copy; 2026 Offlead Adventures. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
