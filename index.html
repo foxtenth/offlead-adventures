@@ -88,6 +88,7 @@
             text-transform: uppercase;
             font-size: 1.0rem;
             letter-spacing: 1px;
+            cursor: pointer;
         }
 
         .nav-links li a:hover {
@@ -211,13 +212,137 @@
         .card-icon { font-size: 3rem; margin-bottom: 20px; }
         .card h3 { font-size: 1.4rem; }
 
+        /* --- GALLERY MODAL STYLES --- */
+        .gallery-modal {
+            display: none; 
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(17, 29, 42, 0.95); /* matching navy blue theme */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .gallery-modal.show {
+            display: flex;
+        }
+
+        .close-gallery {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: var(--white);
+            font-size: 45px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2001;
+            transition: color 0.3s ease;
+        }
+
+        .close-gallery:hover {
+            color: var(--teal-water);
+        }
+
+        .gallery-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 90%;
+            max-width: 1000px;
+            height: 60vh;
+        }
+
+        #mainGalleryImage {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            object-fit: contain;
+        }
+
+        .gallery-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--white);
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .gallery-btn:hover {
+            background: var(--teal-water);
+        }
+
+        .gallery-prev { left: -70px; }
+        .gallery-next { right: -70px; }
+
+        .thumbnail-roller {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            max-width: 80%;
+            overflow-x: auto;
+            padding: 10px 5px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--teal-water) rgba(255,255,255,0.1);
+        }
+
+        .thumbnail-roller::-webkit-scrollbar {
+            height: 8px;
+        }
+        .thumbnail-roller::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+        }
+        .thumbnail-roller::-webkit-scrollbar-thumb {
+            background: var(--teal-water);
+            border-radius: 4px;
+        }
+
+        .thumb-img {
+            height: 80px;
+            width: 120px;
+            object-fit: cover;
+            border-radius: 6px;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            flex-shrink: 0;
+        }
+
+        .thumb-img:hover {
+            opacity: 0.8;
+        }
+
+        .thumb-img.active {
+            opacity: 1;
+            border-color: var(--olive-green);
+            transform: scale(1.05);
+        }
+
         /* --- FOOTER & SOCIALS --- */
         footer {
             background-color: var(--navy-blue);
             color: var(--white);
             text-align: center;
             padding-top: 10px;
-	    padding-bottom: 10px;
+            padding-bottom: 10px;
         }
 
         .social-icons {
@@ -258,6 +383,11 @@
             }
             .hero { padding: 80px 20px; }
             .hero h1 { font-size: 2.2rem; }
+            
+            /* Responsive Gallery adjust */
+            .gallery-prev { left: 10px; z-index: 10; background: rgba(0,0,0,0.5); }
+            .gallery-next { right: 10px; z-index: 10; background: rgba(0,0,0,0.5); }
+            .gallery-content { width: 100%; height: 50vh; }
         }
     </style>
 </head>
@@ -272,6 +402,8 @@
                 <li><a href="#" data-translate="nav-home">Home</a></li>
                 <li><a href="#about" data-translate="nav-about">About Us</a></li>
                 <li><a href="#adventures" data-translate="nav-adv">Offlead Adventures</a></li>
+                <!-- GALLERY LINK ADDED HERE -->
+                <li><a onclick="openGallery(event)" data-translate="nav-gallery">Gallery</a></li>
                 <li><a href="#adventures" data-translate="nav-taxi">Pet Taxi</a></li>
                 <li><a href="#contact" class="btn" data-translate="nav-book">Book a Day Out</a></li>
             </ul>
@@ -342,13 +474,26 @@
         <p style="color: #FFFFFF; font-size: 1.0rem; margin-bottom: 0px;" data-translate="footer-copy">&copy; 2026 Offlead Adventures. All rights reserved.</p>
     </footer>
 
-    <!-- TRANSLATION SCRIPT -->
+    <!-- GALLERY MODAL HTML -->
+    <div id="galleryModal" class="gallery-modal">
+        <span class="close-gallery" onclick="closeGallery()">&times;</span>
+        <div class="gallery-content">
+            <button class="gallery-btn gallery-prev" onclick="changeImage(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+            <img id="mainGalleryImage" src="" alt="Offlead Adventures Gallery">
+            <button class="gallery-btn gallery-next" onclick="changeImage(1)"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <!-- Thumbnail Roller Container -->
+        <div class="thumbnail-roller" id="thumbnailRoller"></div>
+    </div>
+
+    <!-- TRANSLATION & GALLERY SCRIPT -->
     <script>
         const translations = {
             "en": {
                 "nav-home": "Home",
                 "nav-about": "About Us",
                 "nav-adv": "Offlead Adventures",
+                "nav-gallery": "Gallery",
                 "nav-taxi": "Pet Taxi",
                 "nav-book": "Book a Day Out",
                 "hero-tag": "Explore. Play. Return Happy.",
@@ -376,6 +521,7 @@
                 "nav-home": "Inicio",
                 "nav-about": "Sobre Nosotros",
                 "nav-adv": "Aventuras Sin Correa",
+                "nav-gallery": "Galería",
                 "nav-taxi": "Taxi de Mascotas",
                 "nav-book": "Reservar un Día",
                 "hero-tag": "Explorar. Jugar. Volver Feliz.",
@@ -403,6 +549,7 @@
                 "nav-home": "Início",
                 "nav-about": "Sobre Nós",
                 "nav-adv": "Aventuras Sem Coleira",
+                "nav-gallery": "Galeria",
                 "nav-taxi": "Táxi para Pets",
                 "nav-book": "Reservar um Dia",
                 "hero-tag": "Explorar. Brincar. Voltar Feliz.",
@@ -437,6 +584,79 @@
                 }
             });
         }
+
+        /* --- GALLERY JAVASCRIPT --- */
+        // Dummy images of dogs enjoying the outdoors
+        const galleryImages = [
+            "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1000&q=80",
+            "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1000&q=80",
+            "https://images.unsplash.com/photo-1534361960057-19889db9621e?w=1000&q=80",
+            "https://images.unsplash.com/photo-1522276498395-f4f68f7f8454?w=1000&q=80",
+            "https://images.unsplash.com/photo-1552053831-71594a27632d?w=1000&q=80",
+            "https://images.unsplash.com/photo-1597626133663-cb34ae923184?w=1000&q=80"
+        ];
+        
+        let currentImageIndex = 0;
+        const modal = document.getElementById('galleryModal');
+        const mainImage = document.getElementById('mainGalleryImage');
+        const roller = document.getElementById('thumbnailRoller');
+        let thumbnailsRendered = false;
+
+        function openGallery(e) {
+            if(e) e.preventDefault();
+            modal.classList.add('show');
+            if(!thumbnailsRendered) {
+                renderThumbnails();
+                thumbnailsRendered = true;
+            }
+            updateGallery(0);
+        }
+
+        function closeGallery() {
+            modal.classList.remove('show');
+        }
+
+        function changeImage(direction) {
+            let newIndex = currentImageIndex + direction;
+            if (newIndex >= galleryImages.length) newIndex = 0; // Loop to beginning
+            if (newIndex < 0) newIndex = galleryImages.length - 1; // Loop to end
+            updateGallery(newIndex);
+        }
+
+        function updateGallery(index) {
+            currentImageIndex = index;
+            mainImage.src = galleryImages[index];
+            
+            // Update active state on thumbnails
+            const thumbs = document.querySelectorAll('.thumb-img');
+            thumbs.forEach((t, i) => {
+                if(i === index) {
+                    t.classList.add('active');
+                    // Ensure the active thumbnail scrolls into view on the roller
+                    t.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                } else {
+                    t.classList.remove('active');
+                }
+            });
+        }
+
+        function renderThumbnails() {
+            roller.innerHTML = ''; // Clear existing
+            galleryImages.forEach((src, index) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.className = 'thumb-img';
+                img.onclick = () => updateGallery(index);
+                roller.appendChild(img);
+            });
+        }
+
+        // Close modal when clicking outside the image
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal || e.target.classList.contains('gallery-content')) {
+                closeGallery();
+            }
+        });
     </script>
 </body>
 </html>
