@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Offlead Adventures | Ultimate Dog Day Outs</title>
+    
+    <!-- FontAwesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         /* --- COLOR PALETTE & VARIABLES --- */
         :root {
@@ -42,8 +46,7 @@
         }
 
         h1 { font-size: 3rem; line-height: 1.2; }
-        h2 { font-size: 2.2rem; text-align: center; margin-bottom: 40px; }
-        
+        h2 { font-size: 2.2rem; text-align: center; margin-bottom: 40px; }        
         p { margin-bottom: 20px; font-size: 1.1rem; color: #555; }
 
         /* --- NAVIGATION --- */
@@ -65,10 +68,10 @@
         }
 
         .logo img {
-            max-height: 100px; /* Adjusts logo size */
+            max-height: 100px;
             height: auto;
-			display: block;
-			margin: 0px auto;
+            display: block;
+            margin: 0px auto;
         }
 
         .nav-links {
@@ -99,11 +102,34 @@
             font-weight: bold;
             transition: background-color 0.3s ease, transform 0.2s ease;
             display: inline-block;
+            cursor: pointer;
         }
 
         .btn:hover {
             background-color: var(--teal-water);
             transform: translateY(-2px);
+        }
+
+        /* --- TRANSLATION ICONS --- */
+        .lang-icons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            border-left: 2px solid #eee;
+            padding-left: 20px;
+            margin-left: 10px;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .lang-btn:hover {
+            transform: scale(1.2);
         }
 
         /* --- HERO SECTION --- */
@@ -114,11 +140,8 @@
             padding: 120px 20px;
         }
 
-        .hero h1 {
-            color: var(--white);
-            margin-bottom: 20px;
-        }
-
+        .hero h1 { color: var(--white); margin-bottom: 20px; }
+        
         .hero p {
             color: var(--text-light);
             font-size: 1.3rem;
@@ -154,9 +177,7 @@
             padding: 0 20px;
         }
 
-        .intro-section h2 {
-            color: var(--olive-green);
-        }
+        .intro-section h2 { color: var(--olive-green); }
 
         /* --- SERVICES CARDS --- */
         .services-section {
@@ -186,50 +207,56 @@
             transition: transform 0.3s ease;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
-        }
+        .card:hover { transform: translateY(-10px); }
+        .card-icon { font-size: 3rem; margin-bottom: 20px; }
+        .card h3 { font-size: 1.4rem; }
 
-        .card-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .card h3 {
-            font-size: 1.4rem;
-        }
-
-        /* --- FOOTER --- */
+        /* --- FOOTER & SOCIALS --- */
         footer {
             background-color: var(--navy-blue);
             color: var(--white);
             text-align: center;
-            padding: 20px 0px;
+            padding: 40px 20px 20px;
         }
 
-        footer p {
-            color: #FFFFFF;
-            font-size: 1.0rem;
-            margin: 0;
+        .social-icons {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            color: var(--white);
+            font-size: 1.8rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--teal-water);
+            transform: translateY(-3px);
         }
 
         /* --- RESPONSIVE DESIGN --- */
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .nav-container {
                 flex-direction: column;
-                gap: 20px;
+                gap: 15px;
             }
             .nav-links {
                 flex-wrap: wrap;
                 justify-content: center;
                 gap: 15px;
             }
-            .hero {
-                padding: 80px 20px;
+            .lang-icons {
+                border-left: none;
+                border-top: 2px solid #eee;
+                padding-left: 0;
+                padding-top: 10px;
+                margin-left: 0;
             }
-            .hero h1 {
-                font-size: 2.2rem;
-            }
+            .hero { padding: 80px 20px; }
+            .hero h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -241,67 +268,174 @@
                 <img src="MAIN_LOGO.jpg" alt="Offlead Adventures Logo">
             </a>
             <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#adventures">Offlead Adventures</a></li>
-				<li><a href="#adventures">Pet Taxi</a></li>
-                <li><a href="#contact" class="btn">Book a Day Out</a></li>
-				
+                <li><a href="#" data-translate="nav-home">Home</a></li>
+                <li><a href="#about" data-translate="nav-about">About Us</a></li>
+                <li><a href="#adventures" data-translate="nav-adv">Offlead Adventures</a></li>
+                <li><a href="#adventures" data-translate="nav-taxi">Pet Taxi</a></li>
+                <li><a href="#contact" class="btn" data-translate="nav-book">Book a Day Out</a></li>
             </ul>
+            <!-- Translation Icons -->
+            <div class="lang-icons">
+                <button class="lang-btn" onclick="translatePage('en')" title="English">🇬🇧</button>
+                <button class="lang-btn" onclick="translatePage('es')" title="Español">🇪🇸</button>
+                <button class="lang-btn" onclick="translatePage('pt')" title="Português">🇵🇹</button>
+            </div>
         </div>
     </header>
 
     <section class="hero">
-        <span class="tagline">Explore. Play. Return Happy.</span>
-        <h1>The Ultimate Off-Lead Day Out</h1>
-        <p>We take your dog on full-day wilderness tours and off-lead adventures, ensuring they get the exercise, socialisation and nature they crave while you focus on your day.</p>
-        <a href="#contact" class="btn">Schedule an Adventure</a>
+        <span class="tagline" data-translate="hero-tag">Explore. Play. Return Happy.</span>
+        <h1 data-translate="hero-title">The Ultimate Off-Lead Day Out</h1>
+        <p data-translate="hero-desc">We take your dog on full-day wilderness tours and off-lead adventures, ensuring they get the exercise, socialisation and nature they crave while you focus on your day.</p>
+        <a href="#contact" class="btn" data-translate="hero-btn">Schedule an Adventure</a>
     </section>
 
     <section id="about" class="intro-section">
-        <h2>More Than Just a Dog Walk</h2>
-        <p>At <strong>Offlead Adventures</strong>, we believe dogs are happiest when they are exploring the great outdoors.<br>A quick walk around the block isn't always enough.</p>
-        <p>As dedicated canine tour guides, we pick up your dog and take them to safe, expansive environments - from rolling green hills to secluded woodlands.<br>They spend hours running off-lead in a supervised, small-pack environment, allowing them to truly act like dogs.</p>
+        <h2 data-translate="about-title">More Than Just a Dog Walk</h2>
+        <p data-translate="about-p1">At <strong>Offlead Adventures</strong>, we believe dogs are happiest when they are exploring the great outdoors.<br>A quick walk around the block isn't always enough.</p>
+        <p data-translate="about-p2">As dedicated canine tour guides, we pick up your dog and take them to safe, expansive environments - from rolling green hills to secluded woodlands.<br>They spend hours running off-lead in a supervised, small-pack environment, allowing them to truly act like dogs.</p>
     </section>
 
     <section id="adventures" class="services-section">
-        <h2>Our Day Out Packages</h2>
+        <h2 data-translate="serv-title">Our Day Out Packages</h2>
         <div class="services-container">
             <div class="card">
                 <div class="card-icon">🌲</div>
-                <h3>Wilderness Day Tours</h3>
-                <p>Full-day excursions to safe, rural locations. We explore forests, hills, and safe water spots, giving your dog hours of off-lead freedom.</p>
+                <h3 data-translate="card1-title">Wilderness Day Tours</h3>
+                <p data-translate="card1-desc">Full-day excursions to safe, rural locations. We explore forests, hills, and safe water spots, giving your dog hours of off-lead freedom.</p>
             </div>
-            
             <div class="card">
                 <div class="card-icon">🐾</div>
-                <h3>Pack Socialization</h3>
-                <p>We carefully curate small groups of compatible dogs. Your dog will build confidence, learn healthy play, and make lifelong furry friends.</p>
+                <h3 data-translate="card2-title">Pack Socialization</h3>
+                <p data-translate="card2-desc">We carefully curate small groups of compatible dogs. Your dog will build confidence, learn healthy play, and make lifelong furry friends.</p>
             </div>
-
             <div class="card">
                 <div class="card-icon">🚐</div>
-                <h3>Door-to-Door Chauffeur</h3>
-                <p>You don't have to lift a finger. We collect your dog in our safe, air-conditioned vehicle in the morning and return them happy and tired.</p>
+                <h3 data-translate="card3-title">Door-to-Door Chauffeur</h3>
+                <p data-translate="card3-desc">You don't have to lift a finger. We collect your dog in our safe, air-conditioned vehicle in the morning and return them happy and tired.</p>
             </div>
-
-			<div class="card">
+            <div class="card">
                 <div class="card-icon">🚕</div>
-                <h3>Pet Taxi</h3>
-                <p>Take dogs to vet appointments, to restaurants or anywhere you wish. One to One.</p>
+                <h3 data-translate="card4-title">Pet Taxi</h3>
+                <p data-translate="card4-desc">Take dogs to vet appointments, to restaurants or anywhere you wish. One to One.</p>
             </div>
         </div>
     </section>
 
     <footer id="contact">
-        <div style="margin-top: 0px; margin-bottom: 0px; margin-left: auto; margin-right: auto;">
-            <h3 style="color: #FFFFFF">Ready for an adventure?</h3>
-            <p style="color: #FFFFFF; margin-bottom: 15px;">Contact us today to arrange a meet-and-greet.</p>
-            <a href="mailto:offleadadventures@gmail.com" class="btn" style="background-color: var(--teal-water);">Email Us</a>
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #FFFFFF" data-translate="contact-title">Ready for an adventure?</h3>
+            <p style="color: #FFFFFF; margin-bottom: 15px;" data-translate="contact-desc">Contact us today to arrange a meet-and-greet.</p>
+            <a href="mailto:offleadadventures@gmail.com" class="btn" style="background-color: var(--teal-water);" data-translate="contact-btn">Email Us</a>
         </div>
-	<hr style="background-color: #555555; border: none; height: 2px; width: 95%; margin-top: 20px; margin-bottom: 10px; margin-left: auto; margin-right: auto;">
-        <p style="color: #AAAAAA;font-size: 0.9rem">&copy; 2026 Offlead Adventures. All rights reserved.</p>
+        
+        <!-- Social Media / Business Links -->
+        <div class="social-icons">
+            <a href="https://wa.me/" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://facebook.com/" target="_blank" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://instagram.com/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://google.com/" target="_blank" title="Google Business"><i class="fa-brands fa-google"></i></a>
+        </div>
+
+        <hr style="background-color: #555555; border: none; height: 1px; width: 90%; margin: 30px auto 20px auto;">
+        <p style="color: #AAAAAA; font-size: 0.9rem" data-translate="footer-copy">&copy; 2026 Offlead Adventures. All rights reserved.</p>
     </footer>
 
+    <!-- TRANSLATION SCRIPT -->
+    <script>
+        const translations = {
+            "en": {
+                "nav-home": "Home",
+                "nav-about": "About Us",
+                "nav-adv": "Offlead Adventures",
+                "nav-taxi": "Pet Taxi",
+                "nav-book": "Book a Day Out",
+                "hero-tag": "Explore. Play. Return Happy.",
+                "hero-title": "The Ultimate Off-Lead Day Out",
+                "hero-desc": "We take your dog on full-day wilderness tours and off-lead adventures, ensuring they get the exercise, socialisation and nature they crave while you focus on your day.",
+                "hero-btn": "Schedule an Adventure",
+                "about-title": "More Than Just a Dog Walk",
+                "about-p1": "At <strong>Offlead Adventures</strong>, we believe dogs are happiest when they are exploring the great outdoors.<br>A quick walk around the block isn't always enough.",
+                "about-p2": "As dedicated canine tour guides, we pick up your dog and take them to safe, expansive environments - from rolling green hills to secluded woodlands.<br>They spend hours running off-lead in a supervised, small-pack environment, allowing them to truly act like dogs.",
+                "serv-title": "Our Day Out Packages",
+                "card1-title": "Wilderness Day Tours",
+                "card1-desc": "Full-day excursions to safe, rural locations. We explore forests, hills, and safe water spots, giving your dog hours of off-lead freedom.",
+                "card2-title": "Pack Socialization",
+                "card2-desc": "We carefully curate small groups of compatible dogs. Your dog will build confidence, learn healthy play, and make lifelong furry friends.",
+                "card3-title": "Door-to-Door Chauffeur",
+                "card3-desc": "You don't have to lift a finger. We collect your dog in our safe, air-conditioned vehicle in the morning and return them happy and tired.",
+                "card4-title": "Pet Taxi",
+                "card4-desc": "Take dogs to vet appointments, to restaurants or anywhere you wish. One to One.",
+                "contact-title": "Ready for an adventure?",
+                "contact-desc": "Contact us today to arrange a meet-and-greet.",
+                "contact-btn": "Email Us",
+                "footer-copy": "&copy; 2026 Offlead Adventures. All rights reserved."
+            },
+            "es": {
+                "nav-home": "Inicio",
+                "nav-about": "Sobre Nosotros",
+                "nav-adv": "Aventuras Sin Correa",
+                "nav-taxi": "Taxi de Mascotas",
+                "nav-book": "Reservar un Día",
+                "hero-tag": "Explorar. Jugar. Volver Feliz.",
+                "hero-title": "El Mejor Día Libre Sin Correa",
+                "hero-desc": "Llevamos a su perro a recorridos de día completo por la naturaleza, asegurando que reciban el ejercicio, la socialización y la naturaleza que anhelan.",
+                "hero-btn": "Programar una Aventura",
+                "about-title": "Más Que Un Simple Paseo",
+                "about-p1": "En <strong>Offlead Adventures</strong>, creemos que los perros son más felices cuando exploran la naturaleza.<br>Un paseo rápido por la calle no siempre es suficiente.",
+                "about-p2": "Como guías turísticos caninos dedicados, recogemos a su perro y lo llevamos a entornos amplios y seguros.<br>Pasan horas corriendo sin correa en un entorno supervisado de grupos pequeños.",
+                "serv-title": "Nuestros Paquetes",
+                "card1-title": "Excursiones en la Naturaleza",
+                "card1-desc": "Excursiones de día completo a lugares rurales y seguros. Exploramos bosques y colinas, dándole a su perro horas de libertad.",
+                "card2-title": "Socialización en Manada",
+                "card2-desc": "Seleccionamos grupos pequeños de perros compatibles. Su perro ganará confianza, aprenderá a jugar y hará amigos.",
+                "card3-title": "Chófer Puerta a Puerta",
+                "card3-desc": "No tiene que mover un dedo. Recogemos a su perro en nuestro vehículo seguro con aire acondicionado y lo devolvemos feliz.",
+                "card4-title": "Taxi para Mascotas",
+                "card4-desc": "Lleve a sus perros a citas veterinarias, restaurantes o donde desee. Servicio individualizado.",
+                "contact-title": "¿Listo para una aventura?",
+                "contact-desc": "Contáctenos hoy para organizar una reunión.",
+                "contact-btn": "Envíanos un Correo",
+                "footer-copy": "&copy; 2026 Offlead Adventures. Todos los derechos reservados."
+            },
+            "pt": {
+                "nav-home": "Início",
+                "nav-about": "Sobre Nós",
+                "nav-adv": "Aventuras Sem Coleira",
+                "nav-taxi": "Táxi para Pets",
+                "nav-book": "Reservar um Dia",
+                "hero-tag": "Explorar. Brincar. Voltar Feliz.",
+                "hero-title": "O Melhor Dia Livre Sem Coleira",
+                "hero-desc": "Levamos o seu cão em passeios de dia inteiro na natureza e aventuras sem coleira, garantindo que ele tenha o exercício e a natureza que tanto deseja.",
+                "hero-btn": "Agendar uma Aventura",
+                "about-title": "Mais do Que um Simples Passeio",
+                "about-p1": "Na <strong>Offlead Adventures</strong>, acreditamos que os cães são mais felizes quando estão a explorar o ar livre.<br>Um passeio rápido no quarteirão nem sempre é suficiente.",
+                "about-p2": "Como guias turísticos caninos dedicados, recolhemos o seu cão e levamo-lo para ambientes seguros e amplos.<br>Eles passam horas a correr sem coleira num ambiente supervisionado.",
+                "serv-title": "Nossos Pacotes de um Dia",
+                "card1-title": "Excursões na Natureza",
+                "card1-desc": "Excursões de dia inteiro para locais rurais seguros. Exploramos florestas e colinas, dando ao seu cão horas de liberdade.",
+                "card2-title": "Socialização em Matilha",
+                "card2-desc": "Selecionamos pequenos grupos de cães compatíveis. O seu cão ganhará confiança, aprenderá a brincar e fará amigos para a vida.",
+                "card3-title": "Motorista Porta a Porta",
+                "card3-desc": "Não precisa de levantar um dedo. Recolhemos o seu cão no nosso veículo seguro e devolvemo-lo feliz e cansado.",
+                "card4-title": "Táxi para Pets",
+                "card4-desc": "Leve cães a consultas no veterinário, restaurantes ou onde desejar. Atendimento individual.",
+                "contact-title": "Pronto para uma aventura?",
+                "contact-desc": "Contacte-nos hoje para agendar um encontro.",
+                "contact-btn": "Envie-nos um Email",
+                "footer-copy": "&copy; 2026 Offlead Adventures. Todos os direitos reservados."
+            }
+        };
+
+        function translatePage(lang) {
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+        }
+    </script>
 </body>
 </html>
