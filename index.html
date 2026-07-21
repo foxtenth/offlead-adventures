@@ -67,11 +67,6 @@
             position: relative; /* Added for mobile dropdown positioning */
         }
 
-	.logo {
- 	   flex-shrink: 0; /* Prevents the flex container from squishing the logo */
-    		margin-right: 20px; /* Ensures a buffer between the logo and navigation */
-		}
-
         .logo img {
             max-height: 100px;
             height: auto;
@@ -85,24 +80,22 @@
             align-items: center;
         }
 
-	.nav-links {
-    	display: flex;
-    	gap: 15px; /* Reduced from 30px to accommodate longer words */
-    	list-style: none;
-    	align-items: center;
-	}
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            align-items: center;
+        }
 
-	.nav-links li a {
-    		font-weight: 600;
-    		color: var(--navy-blue);
-    		transition: color 0.1s ease;
-    		text-transform: uppercase;
-    		font-size: 0.9rem; /* Slightly reduced from 1.0rem */
-    		letter-spacing: 1px;
-    		cursor: pointer;
-	    	white-space: nowrap; /* Forces text to stay on one line */
-	}
-
+        .nav-links li a {
+            font-weight: 600;
+            color: var(--navy-blue);
+            transition: color 0.1s ease;
+            text-transform: uppercase;
+            font-size: 1.0rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
 
         .nav-links li a:hover {
             color: var(--olive-green);
@@ -362,7 +355,7 @@
             background-color: var(--navy-blue);
             color: var(--white);
             text-align: center;
-            padding-top: 15px;
+            padding-top: 10px;
             padding-bottom: 10px;
             padding-left:5px;
             padding-right:5px;
@@ -387,12 +380,12 @@
         }
 
         /* --- RESPONSIVE DESIGN --- */
-	@media (max-width: 1100px) { /* Increased from 900px */
-    		.menu-toggle {
-       			 display: block; 
-    			}
-		}           
-	    .logo img {
+        @media (max-width: 900px) {
+            .menu-toggle {
+                display: block; /* Show hamburger icon */
+            }
+
+            .logo img {
                 max-height: 50px; /* Halved from the original 100px */
             }
 
@@ -533,8 +526,8 @@
             <a href="https://google.com/" target="_blank" title="Google Business"><i class="fa-brands fa-google"></i></a>
         </div>
 
-        <hr style="background-color: #FFFFFF; border: none; height: 2px; width: 95%; margin: 10px auto;">
-        <p style="color: #FFFFFF; font-size: 1.0rem; margin-bottom: 0px;" data-translate="footer-copy">&copy; 2026 Offlead Adventures. All rights reserved.</p>
+
+        <p style="color: #FFFFFF; font-size: 1.0rem; margin-bottom: 0px; border: 0px" data-translate="footer-copy">&copy; 2026 Offlead Adventures. All rights reserved.</p>
     </footer>
 
     <div id="galleryModal" class="gallery-modal">
