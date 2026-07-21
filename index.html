@@ -86,7 +86,7 @@
 
         .nav-links {
             display: flex;
-            gap: 14px; /* Reduced gap to accommodate full font size */
+            gap: 20px; /* Reduced gap to accommodate full font size */
             list-style: none;
             align-items: center;
         }
@@ -126,7 +126,7 @@
         /* --- TRANSLATION ICONS --- */
         .lang-icons {
             display: flex;
-            gap: 8px;
+            gap: 10px;
             align-items: center;
             border-left: 2px solid #eee;
             padding-left: 12px;
@@ -136,13 +136,23 @@
         .lang-btn {
             background: none;
             border: none;
-            font-size: 1.4rem;
             cursor: pointer;
             transition: transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            padding: 0;
         }
 
         .lang-btn:hover {
-            transform: scale(1.2);
+            transform: scale(1.15);
+        }
+
+        .flag-icon {
+            width: 25px;
+            height: auto;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            display: block;
         }
 
         /* --- MOBILE MENU TOGGLE --- */
@@ -465,9 +475,15 @@
                     <li><a href="#contact" class="btn" data-translate="nav-book">Book a Day Out</a></li>
                 </ul>
                 <div class="lang-icons">
-		<button class="lang-btn" onclick="translatePage('pt')" title="Português">🇵🇹</button>
-                    <button class="lang-btn" onclick="translatePage('es')" title="Español">🇪🇸</button>
-                    <button class="lang-btn" onclick="translatePage('en')" title="English">🇬🇧</button>
+                    <button class="lang-btn" onclick="translatePage('pt')" title="Português">
+                        <img src="https://flagcdn.com/w40/pt.png" alt="Português" class="flag-icon">
+                    </button>
+                    <button class="lang-btn" onclick="translatePage('es')" title="Español">
+                        <img src="https://flagcdn.com/w40/es.png" alt="Español" class="flag-icon">
+                    </button>
+                    <button class="lang-btn" onclick="translatePage('en')" title="English">
+                        <img src="https://flagcdn.com/w40/gb.png" alt="English" class="flag-icon">
+                    </button>
                 </div>
             </div>
         </div>
@@ -572,7 +588,7 @@
             "es": {
                 "nav-home": "Inicio",
                 "nav-about": "Sobre Nosotros",
-                "nav-adv": "Aventuras Sin Correa",
+                "nav-adv": "Aventuras",
                 "nav-gallery": "Galería",
                 "nav-taxi": "Taxi de Mascotas",
                 "nav-book": "Reservar un Día",
@@ -600,7 +616,7 @@
             "pt": {
                 "nav-home": "Início",
                 "nav-about": "Sobre Nós",
-                "nav-adv": "Aventuras Sem Coleira",
+                "nav-adv": "Aventuras",
                 "nav-gallery": "Galeria",
                 "nav-taxi": "Táxi para Pets",
                 "nav-book": "Reservar um Dia",
