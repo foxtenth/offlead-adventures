@@ -341,7 +341,7 @@
             background-color: var(--navy-blue);
             color: var(--white);
             text-align: center;
-            padding-top: 10px;
+            padding-top: 15px;
             padding-bottom: 10px;
         }
 
@@ -400,8 +400,8 @@
             </a>
             <ul class="nav-links">
                 <li><a href="#" data-translate="nav-home">Home</a></li>
-                <li><a href="#about" data-translate="nav-about">About Us</a></li>
-                <li><a href="#adventures" data-translate="nav-adv">Offlead Adventures</a></li>
+                <li><a href="#about" data-translate="nav-about">Who Are We</a></li>
+                <li><a href="#adventures" data-translate="nav-adv">Adventures</a></li>
                 <!-- GALLERY LINK ADDED HERE -->
                 <li><a onclick="openGallery(event)" data-translate="nav-gallery">Gallery</a></li>
                 <li><a href="#adventures" data-translate="nav-taxi">Pet Taxi</a></li>
@@ -586,14 +586,12 @@
         }
 
         /* --- GALLERY JAVASCRIPT --- */
-        // Dummy images of dogs enjoying the outdoors
+        // images of dogs
         const galleryImages = [
             "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1000&q=80",
             "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1000&q=80",
             "https://images.unsplash.com/photo-1534361960057-19889db9621e?w=1000&q=80",
-            "https://images.unsplash.com/photo-1522276498395-f4f68f7f8454?w=1000&q=80",
-            "https://images.unsplash.com/photo-1552053831-71594a27632d?w=1000&q=80",
-            "https://images.unsplash.com/photo-1597626133663-cb34ae923184?w=1000&q=80"
+            "https://images.unsplash.com/photo-1552053831-71594a27632d?w=1000&q=80"
         ];
         
         let currentImageIndex = 0;
