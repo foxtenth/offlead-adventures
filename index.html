@@ -149,4 +149,588 @@
 
         /* --- HERO SECTION --- */
         .hero {
-            background: linear-gradient(rgba(17, 29, 42, 0.8), rgba(103, 120, 67, 0.8)), url('
+            background: linear-gradient(rgba(17, 29, 42, 0.8), rgba(103, 120, 67, 0.8)), url('https://images.unsplash.com/photo-1544568100-847a948585b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 120px 20px;
+        }
+
+        .hero h1 { color: var(--white); margin-bottom: 20px; }
+        
+        .hero p {
+            color: var(--text-light);
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+
+        .hero .tagline {
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #d1dfb6;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .hero .btn {
+            background-color: var(--teal-water);
+            font-size: 1.1rem;
+            padding: 14px 32px;
+        }
+
+        .hero .btn:hover {
+            background-color: var(--white);
+            color: var(--navy-blue) !important;
+        }
+
+        /* --- INTRO SECTION --- */
+        .intro-section {
+            max-width: 900px;
+            margin: 80px auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .intro-section h2 { color: var(--olive-green); }
+
+        /* --- SERVICES CARDS --- */
+        .services-section {
+            background-color: var(--white);
+            padding: 80px 20px;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: var(--light-bg);
+            border-radius: 12px;
+            padding: 40px 30px;
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+            border-bottom: 4px solid var(--teal-water);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover { transform: translateY(-10px); }
+        .card-icon { font-size: 3rem; margin-bottom: 20px; }
+        .card h3 { font-size: 1.4rem; }
+
+        /* --- GALLERY MODAL STYLES --- */
+        .gallery-modal {
+            display: none; 
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(17, 29, 42, 0.95);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .gallery-modal.show {
+            display: flex;
+        }
+
+        .close-gallery {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: var(--white);
+            font-size: 45px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2001;
+            transition: color 0.3s ease;
+        }
+
+        .close-gallery:hover {
+            color: var(--teal-water);
+        }
+
+        .gallery-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 90%;
+            max-width: 1000px;
+            height: 60vh;
+        }
+
+        #mainGalleryImage {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            object-fit: contain;
+        }
+
+        .gallery-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--white);
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .gallery-btn:hover {
+            background: var(--teal-water);
+        }
+
+        .gallery-prev { left: -70px; }
+        .gallery-next { right: -70px; }
+
+        .thumbnail-roller {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            max-width: 80%;
+            overflow-x: auto;
+            padding: 10px 5px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--teal-water) rgba(255,255,255,0.1);
+        }
+
+        .thumbnail-roller::-webkit-scrollbar {
+            height: 8px;
+        }
+        .thumbnail-roller::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+        }
+        .thumbnail-roller::-webkit-scrollbar-thumb {
+            background: var(--teal-water);
+            border-radius: 4px;
+        }
+
+        .thumb-img {
+            height: 80px;
+            width: 120px;
+            object-fit: cover;
+            border-radius: 6px;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            flex-shrink: 0;
+        }
+
+        .thumb-img:hover {
+            opacity: 0.8;
+        }
+
+        .thumb-img.active {
+            opacity: 1;
+            border-color: var(--olive-green);
+            transform: scale(1.05);
+        }
+
+        /* --- FOOTER & SOCIALS --- */
+        footer {
+            background-color: var(--navy-blue);
+            color: var(--white);
+            text-align: center;
+            padding-top: 15px;
+            padding-bottom: 10px;
+            padding-left:5px;
+            padding-right:5px;
+        }
+
+        .social-icons {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-icons a {
+            color: var(--white);
+            font-size: 1.8rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--teal-water);
+            transform: translateY(-3px);
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 900px) {
+            .menu-toggle {
+                display: block; /* Show hamburger icon */
+            }
+
+            .nav-wrapper {
+                display: none; /* Hide menu by default on mobile */
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                
+                /* CHANGED: Align to the right and make it 50% width */
+                right: 0;
+                left: auto;
+                width: 50%;
+                
+                background-color: var(--white);
+                padding: 20px 0;
+                
+                /* CHANGED: Adjusted shadow direction and added a subtle border */
+                box-shadow: -5px 5px 15px rgba(0,0,0,0.1);
+                border-top: 1px solid #eee;
+                border-left: 1px solid #eee; 
+                border-bottom-left-radius: 8px; /* Slightly round the bottom corner for style */
+            }
+
+            .nav-wrapper.active {
+                display: flex; /* Show menu when active class is toggled */
+            }
+
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .lang-icons {
+                border-left: none;
+                border-top: 1px solid #eee;
+                padding-left: 0;
+                padding-top: 15px;
+                margin-left: 0;
+                margin-top: 15px;
+                justify-content: center;
+                width: 80%;
+                margin: 15px auto 0 auto; /* Added to keep it centered inside the 50% width container */
+            }
+
+            .hero { padding: 80px 20px; }
+            .hero h1 { font-size: 2.2rem; }
+            
+            /* Responsive Gallery adjust */
+            .gallery-prev { left: 10px; z-index: 10; background: rgba(0,0,0,0.5); }
+            .gallery-next { right: 10px; z-index: 10; background: rgba(0,0,0,0.5); }
+            .gallery-content { width: 100%; height: 50vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="MAIN_LOGO.png" alt="Offlead Adventures Logo">
+            </a>
+
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <div class="nav-wrapper" id="nav-wrapper">
+                <ul class="nav-links">
+                    <li><a href="#" data-translate="nav-home">Home</a></li>
+                    <li><a href="#adventures" data-translate="nav-adv">Adventures</a></li>
+                    <li><a href="#adventures" data-translate="nav-taxi">Pet Taxi</a></li>
+                    <li><a onclick="openGallery(event)" data-translate="nav-gallery">Gallery</a></li>
+                    <li><a href="#about" data-translate="nav-about">About us</a></li>
+                    <li><a href="#contact" class="btn" data-translate="nav-book">Book a Day Out</a></li>
+                </ul>
+                <div class="lang-icons">
+                    <button class="lang-btn" onclick="translatePage('en')" title="English">🇬🇧</button>
+                    <button class="lang-btn" onclick="translatePage('es')" title="Español">🇪🇸</button>
+                    <button class="lang-btn" onclick="translatePage('pt')" title="Português">🇵🇹</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <span class="tagline" data-translate="hero-tag">Explore. Play. Return Happy.</span>
+        <h1 data-translate="hero-title">The Ultimate Off-Lead Day Out</h1>
+        <p data-translate="hero-desc">We take your dog on full-day wilderness tours and off-lead adventures, ensuring they get the exercise, socialisation and nature they crave while you focus on your day.</p>
+        <a href="#contact" class="btn" data-translate="hero-btn">Schedule an Adventure</a>
+    </section>
+
+    <section id="about" class="intro-section">
+        <h2 data-translate="about-title">More Than Just a Dog Walk</h2>
+        <p data-translate="about-p1">At <strong>Offlead Adventures</strong>, we believe dogs are happiest when they are exploring the great outdoors.<br>A quick walk around the block isn't always enough.</p>
+        <p data-translate="about-p2">As dedicated canine tour guides, we pick up your dog and take them to safe, expansive environments - from rolling green hills to secluded woodlands.<br>They spend hours running off-lead in a supervised, small-pack environment, allowing them to truly act like dogs.</p>
+    </section>
+
+    <section id="adventures" class="services-section">
+        <h2 data-translate="serv-title">Our Day Out Packages</h2>
+        <div class="services-container">
+            <div class="card">
+                <div class="card-icon">🌲</div>
+                <h3 data-translate="card1-title">Wilderness Day Tours</h3>
+                <p data-translate="card1-desc">Full-day excursions to safe, rural locations. We explore forests, hills, and safe water spots, giving your dog hours of off-lead freedom.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🐾</div>
+                <h3 data-translate="card2-title">Pack Socialization</h3>
+                <p data-translate="card2-desc">We carefully curate small groups of compatible dogs. Your dog will build confidence, learn healthy play, and make lifelong furry friends.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🚐</div>
+                <h3 data-translate="card3-title">Door-to-Door Chauffeur</h3>
+                <p data-translate="card3-desc">You don't have to lift a finger. We collect your dog in our safe, air-conditioned vehicle in the morning and return them happy and tired.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🚕</div>
+                <h3 data-translate="card4-title">Pet Taxi</h3>
+                <p data-translate="card4-desc">Take dogs to vet appointments, to restaurants or anywhere you wish. One to One.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #FFFFFF" data-translate="contact-title">Ready for an adventure?</h3>
+            <p style="color: #FFFFFF; margin-bottom: 15px;" data-translate="contact-desc">Contact us today to arrange a meet-and-greet.</p>
+            <a href="mailto:offleadadventures@gmail.com" class="btn" style="background-color: var(--teal-water);" data-translate="contact-btn">Email Us</a>
+        </div>
+        
+        <div class="social-icons">
+            <a href="https://wa.me/" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://facebook.com/" target="_blank" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://instagram.com/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://google.com/" target="_blank" title="Google Business"><i class="fa-brands fa-google"></i></a>
+        </div>
+
+        <hr style="background-color: #FFFFFF; border: none; height: 2px; width: 95%; margin: 10px auto;">
+        <p style="color: #FFFFFF; font-size: 1.0rem; margin-bottom: 0px;" data-translate="footer-copy">&copy; 2026 Offlead Adventures. All rights reserved.</p>
+    </footer>
+
+    <div id="galleryModal" class="gallery-modal">
+        <span class="close-gallery" onclick="closeGallery()">&times;</span>
+        <div class="gallery-content">
+            <button class="gallery-btn gallery-prev" onclick="changeImage(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+            <img id="mainGalleryImage" src="" alt="Offlead Adventures Gallery">
+            <button class="gallery-btn gallery-next" onclick="changeImage(1)"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div class="thumbnail-roller" id="thumbnailRoller"></div>
+    </div>
+
+    <script>
+        const translations = {
+            "en": {
+                "nav-home": "Home",
+                "nav-about": "About Us",
+                "nav-adv": "Offlead Adventures",
+                "nav-gallery": "Gallery",
+                "nav-taxi": "Pet Taxi",
+                "nav-book": "Book a Day Out",
+                "hero-tag": "Explore. Play. Return Happy.",
+                "hero-title": "The Ultimate Off-Lead Day Out",
+                "hero-desc": "We take your dog on full-day wilderness tours and off-lead adventures, ensuring they get the exercise, socialisation and nature they crave while you focus on your day.",
+                "hero-btn": "Schedule an Adventure",
+                "about-title": "More Than Just a Dog Walk",
+                "about-p1": "At <strong>Offlead Adventures</strong>, we believe dogs are happiest when they are exploring the great outdoors.<br>A quick walk around the block isn't always enough.",
+                "about-p2": "As dedicated canine tour guides, we pick up your dog and take them to safe, expansive environments - from rolling green hills to secluded woodlands.<br>They spend hours running off-lead in a supervised, small-pack environment, allowing them to truly act like dogs.",
+                "serv-title": "Our Day Out Packages",
+                "card1-title": "Wilderness Day Tours",
+                "card1-desc": "Full-day excursions to safe, rural locations. We explore forests, hills, and safe water spots, giving your dog hours of off-lead freedom.",
+                "card2-title": "Pack Socialization",
+                "card2-desc": "We carefully curate small groups of compatible dogs. Your dog will build confidence, learn healthy play, and make lifelong furry friends.",
+                "card3-title": "Door-to-Door Chauffeur",
+                "card3-desc": "You don't have to lift a finger. We collect your dog in our safe, air-conditioned vehicle in the morning and return them happy and tired.",
+                "card4-title": "Pet Taxi",
+                "card4-desc": "Take dogs to vet appointments, to restaurants or anywhere you wish. One to One.",
+                "contact-title": "Ready for an adventure?",
+                "contact-desc": "Contact us today to arrange a meet-and-greet.",
+                "contact-btn": "Email Us",
+                "footer-copy": "&copy; 2026 Offlead Adventures. All rights reserved."
+            },
+            "es": {
+                "nav-home": "Inicio",
+                "nav-about": "Sobre Nosotros",
+                "nav-adv": "Aventuras Sin Correa",
+                "nav-gallery": "Galería",
+                "nav-taxi": "Taxi de Mascotas",
+                "nav-book": "Reservar un Día",
+                "hero-tag": "Explorar. Jugar. Volver Feliz.",
+                "hero-title": "El Mejor Día Libre Sin Correa",
+                "hero-desc": "Llevamos a su perro a recorridos de día completo por la naturaleza, asegurando que reciban el ejercicio, la socialización y la naturaleza que anhelan.",
+                "hero-btn": "Programar una Aventura",
+                "about-title": "Más Que Un Simple Paseo",
+                "about-p1": "En <strong>Offlead Adventures</strong>, creemos que los perros son más felices cuando exploran la naturaleza.<br>Un paseo rápido por la calle no siempre es suficiente.",
+                "about-p2": "Como guías turísticos caninos dedicados, recogemos a su perro y lo llevamos a entornos amplios y seguros.<br>Pasan horas corriendo sin correa en un entorno supervisado de grupos pequeños.",
+                "serv-title": "Nuestros Paquetes",
+                "card1-title": "Excursiones en la Naturaleza",
+                "card1-desc": "Excursiones de día completo a lugares rurales y seguros. Exploramos bosques y colinas, dándole a su perro horas de libertad.",
+                "card2-title": "Socialización en Manada",
+                "card2-desc": "Seleccionamos grupos pequeños de perros compatibles. Su perro ganará confianza, aprenderá a jugar y hará amigos.",
+                "card3-title": "Chófer Puerta a Puerta",
+                "card3-desc": "No tiene que mover un dedo. Recogemos a su perro en nuestro vehículo seguro con aire acondicionado y lo devolvemos feliz.",
+                "card4-title": "Taxi para Mascotas",
+                "card4-desc": "Lleve a sus perros a citas veterinarias, restaurantes o donde desee. Servicio individualizado.",
+                "contact-title": "¿Listo para una aventura?",
+                "contact-desc": "Contáctenos hoy para organizar una reunión.",
+                "contact-btn": "Envíanos un Correo",
+                "footer-copy": "&copy; 2026 Offlead Adventures. Todos los derechos reservados."
+            },
+            "pt": {
+                "nav-home": "Início",
+                "nav-about": "Sobre Nós",
+                "nav-adv": "Aventuras Sem Coleira",
+                "nav-gallery": "Galeria",
+                "nav-taxi": "Táxi para Pets",
+                "nav-book": "Reservar um Dia",
+                "hero-tag": "Explorar. Brincar. Voltar Feliz.",
+                "hero-title": "O Melhor Dia Livre Sem Coleira",
+                "hero-desc": "Levamos o seu cão em passeios de dia inteiro na natureza e aventuras sem coleira, garantindo que ele tenha o exercício e a natureza que tanto deseja.",
+                "hero-btn": "Agendar uma Aventura",
+                "about-title": "Mais do Que um Simples Passeio",
+                "about-p1": "Na <strong>Offlead Adventures</strong>, acreditamos que os cães são mais felizes quando estão a explorar o ar livre.<br>Um passeio rápido no quarteirão nem sempre é suficiente.",
+                "about-p2": "Como guias turísticos caninos dedicados, recolhemos o seu cão e levamo-lo para ambientes seguros e amplos.<br>Eles passam horas a correr sem coleira num ambiente supervisionado.",
+                "serv-title": "Nossos Pacotes de um Dia",
+                "card1-title": "Excursões na Natureza",
+                "card1-desc": "Excursões de dia inteiro para locais rurais seguros. Exploramos florestas e colinas, dando ao seu cão horas de liberdade.",
+                "card2-title": "Socialização em Matilha",
+                "card2-desc": "Selecionamos pequenos grupos de cães compatíveis. O seu cão ganhará confiança, aprenderá a brincar e fará amigos para a vida.",
+                "card3-title": "Motorista Porta a Porta",
+                "card3-desc": "Não precisa de levantar um dedo. Recolhemos o seu cão no nosso veículo seguro e devolvemo-lo feliz e cansado.",
+                "card4-title": "Táxi para Pets",
+                "card4-desc": "Leve cães a consultas no veterinário, restaurantes ou onde desejar. Atendimento individual.",
+                "contact-title": "Pronto para uma aventura?",
+                "contact-desc": "Contacte-nos hoje para agendar um encontro.",
+                "contact-btn": "Envie-nos um Email",
+                "footer-copy": "&copy; 2026 Offlead Adventures. Todos os direitos reservados."
+            }
+        };
+
+        function translatePage(lang) {
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+        }
+
+        /* --- MOBILE MENU JAVASCRIPT --- */
+        const mobileMenuBtn = document.getElementById('mobile-menu');
+        const navWrapper = document.getElementById('nav-wrapper');
+        const menuIcon = mobileMenuBtn.querySelector('i');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navWrapper.classList.toggle('active');
+            
+            // Toggle between hamburger and X icon
+            if (navWrapper.classList.contains('active')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            } else {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Optional: Close menu when a link is clicked
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navWrapper.classList.remove('active');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        /* --- GALLERY JAVASCRIPT --- */
+        const galleryImages = [
+            "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1000&q=80",
+            "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1000&q=80",
+            "https://images.unsplash.com/photo-1534361960057-19889db9621e?w=1000&q=80",
+            "https://images.unsplash.com/photo-1552053831-71594a27632d?w=1000&q=80"
+        ];
+        
+        let currentImageIndex = 0;
+        const modal = document.getElementById('galleryModal');
+        const mainImage = document.getElementById('mainGalleryImage');
+        const roller = document.getElementById('thumbnailRoller');
+        let thumbnailsRendered = false;
+
+        function openGallery(e) {
+            if(e) e.preventDefault();
+            modal.classList.add('show');
+            if(!thumbnailsRendered) {
+                renderThumbnails();
+                thumbnailsRendered = true;
+            }
+            updateGallery(0);
+        }
+
+        function closeGallery() {
+            modal.classList.remove('show');
+        }
+
+        function changeImage(direction) {
+            let newIndex = currentImageIndex + direction;
+            if (newIndex >= galleryImages.length) newIndex = 0; // Loop to beginning
+            if (newIndex < 0) newIndex = galleryImages.length - 1; // Loop to end
+            updateGallery(newIndex);
+        }
+
+        function updateGallery(index) {
+            currentImageIndex = index;
+            mainImage.src = galleryImages[index];
+            
+            // Update active state on thumbnails
+            const thumbs = document.querySelectorAll('.thumb-img');
+            thumbs.forEach((t, i) => {
+                if(i === index) {
+                    t.classList.add('active');
+                    // Ensure the active thumbnail scrolls into view on the roller
+                    t.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                } else {
+                    t.classList.remove('active');
+                }
+            });
+        }
+
+        function renderThumbnails() {
+            roller.innerHTML = ''; // Clear existing
+            galleryImages.forEach((src, index) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.className = 'thumb-img';
+                img.onclick = () => updateGallery(index);
+                roller.appendChild(img);
+            });
+        }
+
+        // Close modal when clicking outside the image
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal || e.target.classList.contains('gallery-content')) {
+                closeGallery();
+            }
+        });
+    </script>
+</body>
+</html>
