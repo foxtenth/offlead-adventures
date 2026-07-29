@@ -13,7 +13,7 @@
         :root {
             --navy-blue: #1f252b;
             --olive-green: #61c378;
-            --teal-water: #806e40;
+            --teal-water: #61c378;
             --light-bg: #f9faf8;
             --white: #ffffff;
             --text-dark: #444238;
@@ -70,7 +70,7 @@
 
         .logo {
             flex-shrink: 0;
-            margin-right: 15px;
+            margin: 0px 15px;
         }
 
         .logo img {
@@ -92,7 +92,7 @@
             align-items: center;
         }
 
-        .nav-links li a {
+        .nav-links li a:not(.btn) {
             font-weight: 600;
             color: var(--navy-blue);
             transition: color 0.1s ease;
@@ -107,22 +107,41 @@
             color: var(--olive-green);
         }
 
+        .nav-links li a.btn {
+text-transform: uppercase;
+    font-size: 1.0rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.1s ease, color 0.1s ease, transform 0.2s ease;
+        }
+
         .btn {
+            text-transform: uppercase;
+            letter-spacing: 1px;
             background-color: var(--olive-green);
             color: var(--white) !important;
-            padding: 10px 18px;
+            padding: 10px 20px;
             border-radius: 30px;
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: 600; /* Standardized weight */
             display: inline-block;
             cursor: pointer;
             white-space: nowrap;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+
+            /* Prevents font snapping/weight shifting during transform animations */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            backface-visibility: hidden;
+            transform: translateZ(0); /* Forces GPU layer upfront so hover doesn't trigger a re-render */
         }
 
         .btn:hover {
             background-color: var(--olive-green);
-            transform: translateY(-2px);
+            transform: translateX(-3px);
         }
+
+    
 
         /* --- TRANSLATION ICONS --- */
         .lang-icons {
@@ -185,9 +204,10 @@
             font-weight: bold;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: #575244;
+            color: #444238;
             margin-bottom: 10px;
             display: block;
+            transform: translateX(-10%);
         }
 
         .hero .btn {
@@ -411,6 +431,10 @@
                 display: block;
             }
 
+            .hero .tagline {
+                transform: none;
+            }
+
             .logo img {
                 max-height: 50px;
             }
@@ -476,14 +500,14 @@
             </div>
 
             <div class="nav-wrapper" id="nav-wrapper">
-                <ul class="nav-links">
-                    <li><a href="https://beta.offlead-adventures.pt/#" data-translate="nav-home">Hello</a></li>
-                    <li><a href="https://beta.offlead-adventures.pt/#adventures" data-translate="nav-adv">Adventures</a></li>
-                    <li><a href="https://beta.offlead-adventures.pt/#adventures" data-translate="nav-taxi">Pet Taxi</a></li>
-                    <li><a onclick="openGallery(event)" data-translate="nav-gallery">Gallery</a></li>
-                    <li><a href="https://beta.offlead-adventures.pt/#about" data-translate="nav-about">About</a></li>
-                    <li><a href="https://beta.offlead-adventures.pt/#contact" class="btn" data-translate="nav-book">Get in touch</a></li>
-                </ul>
+                    <ul class="nav-links">
+                        <li><a href="{{ url_for('home') }}" data-translate="nav-home">Hello</a></li>                       
+                        <li><a href="{{ url_for('home') }}#adventures" data-translate="nav-adv">Adventures</a></li>                  
+                        <li><a href="{{ url_for('pet_taxi') }}" data-translate="nav-taxi">Pet Taxi</a></li>                  
+                        <li><a href="{{ url_for('home') }}#about" data-translate="nav-about">About</a></li>
+                        <li><a onclick="openGallery(event)" data-translate="nav-gallery">Gallery</a></li>           
+                        <li><a href="#contact" class="btn" data-translate="nav-book">Get in touch</a></li>
+                    </ul>
                 <div class="lang-icons">
                     <button class="lang-btn" onclick="translatePage('pt')" title="Português">
                         <span class="fi fi-pt"></span>
@@ -500,8 +524,7 @@
     </header>
 
     <section class="hero">
-        <span class="tagline" data-translate="hero-tag">Explore. Play. Return Happy.</span>
-        <h1 data-translate="hero-title">The Ultimate Off-Lead Day Out</h1>
+        <span class="tagline" data-translate="hero-tag" style="color:#dbffd6;")>Explore. Play. Return Happy.</span>        
         <p data-translate="hero-desc">We take your dog on full-day wilderness tours and off-lead adventures, ensuring they get the exercise, socialisation and nature they crave while you focus on your day.</p>
         <a href="https://beta.offlead-adventures.pt/#contact" class="btn" data-translate="hero-btn">Schedule an Adventure</a>
     </section>

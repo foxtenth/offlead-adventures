@@ -13,7 +13,7 @@
         :root {
             --navy-blue: #1f252b;
             --olive-green: #61c378;
-            --teal-water: #806e40;
+            --teal-water: #1ca4ff;
             --light-bg: #f9faf8;
             --white: #ffffff;
             --text-dark: #444238;
@@ -90,7 +90,7 @@
             align-items: center;
         }
 
-        .nav-links li a {
+         .nav-links li a:not(.btn) {
             font-weight: 600;
             color: var(--navy-blue);
             transition: color 0.1s ease;
@@ -105,21 +105,38 @@
             color: var(--olive-green);
         }
 
+        .nav-links li a.btn {
+            text-transform: uppercase;
+            font-size: 1.0rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background-color 0.1s ease, color 0.1s ease, transform 0.2s ease;
+        }
+
         .btn {
+            text-transform: uppercase;
+            letter-spacing: 1px;
             background-color: var(--olive-green);
             color: var(--white) !important;
-            padding: 10px 18px;
+            padding: 10px 20px;
             border-radius: 30px;
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: 600; /* Standardized weight */
             display: inline-block;
             cursor: pointer;
             white-space: nowrap;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+
+            /* Prevents font snapping/weight shifting during transform animations */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            backface-visibility: hidden;
+            transform: translateZ(0); /* Forces GPU layer upfront so hover doesn't trigger a re-render */
         }
 
         .btn:hover {
             background-color: var(--olive-green);
-            transform: translateY(-2px);
+            transform: translateX(-3px);
         }
 
         .lang-icons {
@@ -293,14 +310,14 @@
             background-color: var(--navy-blue);
             color: var(--white);
             text-align: center;
-            padding-top: 40px;
-            padding-bottom: 20px;
-            padding-left: 20px;
-            padding-right: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 5px;
+            padding-right: 5px;
         }
 
         .social-icons {
-            margin: 20px 0;
+            margin: 10px 0;
             display: flex;
             justify-content: center;
             gap: 30px;
@@ -373,10 +390,11 @@
 
             <div class="nav-wrapper" id="nav-wrapper">
                 <ul class="nav-links">
-                    <li><a href="index.html" data-translate="nav-home">Home</a></li>
-                    <li><a href="index.html#adventures" data-translate="nav-adv">Adventures</a></li>
-                    <li><a href="pet-taxi.html" data-translate="nav-taxi" style="color: var(--olive-green);">Pet Taxi</a></li>
-                    <li><a href="index.html#about" data-translate="nav-about">About</a></li>
+                    <li><a href="{{ url_for('home') }}" data-translate="nav-home">Hello</a></li>        
+                    <li><a href="{{ url_for('home') }}#adventures" data-translate="nav-adv">Adventures</a></li>                   
+                    <li><a href="{{ url_for('pet_taxi') }}" data-translate="nav-taxi">Pet Taxi</a></li>               
+                    <li><a href="{{ url_for('home') }}#about" data-translate="nav-about">About</a></li>
+                    <li><a onclick="openGallery(event)" data-translate="nav-gallery">Gallery</a></li>
                     <li><a href="#contact" class="btn" data-translate="nav-book">Get in touch</a></li>
                 </ul>
                 <div class="lang-icons">
@@ -477,7 +495,7 @@
         <div class="section-inner" style="text-align: center;">
             <h2 style="color: var(--olive-green);">Travel With Peace of Mind</h2>
             <p style="max-width: 700px; margin: 0 auto; font-size: 1.2rem;">
-                Whether you're working, travelling or simply unable to transport your dog yourself, we'll make sure they arrive safely and comfortably. Every journey is handled with the same care and professionalism as our adventure days.
+                Whether you're working, travelling or simply unable to transport your dog yourself we'll make sure they arrive safely and comfortably. <br>Every journey is handled with the same care and professionalism as our adventure days.
             </p>
         </div>
     </div>
