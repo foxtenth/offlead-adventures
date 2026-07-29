@@ -46,7 +46,7 @@
         }
 
         h1 { font-size: 3rem; line-height: 1.2; }
-        h2 { font-size: 2.2rem; text-align: center; margin-bottom: 40px; }        
+        h2 { font-size: 2.2rem; text-align: center; margin-bottom: 20px; }        
         p { margin-bottom: 20px; font-size: 1.1rem; color: #555; }
 
         /* --- NAVIGATION --- */
@@ -108,12 +108,12 @@
         }
 
         .nav-links li a.btn {
-text-transform: uppercase;
-    font-size: 1.0rem;
-    letter-spacing: 1px;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background-color 0.1s ease, color 0.1s ease, transform 0.2s ease;
+            text-transform: uppercase;
+            font-size: 1.0rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background-color 0.1s ease, color 0.1s ease, transform 0.2s ease;
         }
 
         .btn {
@@ -185,7 +185,7 @@ text-transform: uppercase;
 
         /* --- HERO SECTION --- */
         .hero {
-            background: linear-gradient(rgba(255, 255, 255, 0.15), rgba(146, 125, 68, 0.8)), url('https://images.unsplash.com/photo-1544568100-847a948585b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            background: linear-gradient(rgba(255, 225, 142, 0.15), rgba(146, 125, 68, 0.8)), url('https://images.unsplash.com/photo-1544568100-847a948585b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
             color: var(--white);
             text-align: center;
             padding: 120px 20px;
@@ -224,7 +224,7 @@ text-transform: uppercase;
         /* --- INTRO SECTION --- */
         .intro-section {
             max-width: 900px;
-            margin: 80px auto;
+            margin: 40px auto;
             text-align: center;
             padding: 0 20px;
         }
@@ -234,7 +234,7 @@ text-transform: uppercase;
         /* --- SERVICES CARDS --- */
         .services-section {
             background-color: var(--white);
-            padding: 80px 20px;
+            padding: 40px 20px;
         }
 
         .services-container {
@@ -262,6 +262,88 @@ text-transform: uppercase;
         .card:hover { transform: translateY(-10px); }
         .card-icon { font-size: 3rem; margin-bottom: 20px; }
         .card h3 { font-size: 1.4rem; }
+        
+       /* --- CONTACT MODAL STYLES --- */
+        .contact-modal {
+            display: none; 
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(44, 54, 62, 0.95);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .contact-modal.show {
+            display: flex;
+        }
+
+        .close-contact {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: var(--white);
+            font-size: 45px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2001;
+            transition: color 0.3s ease;
+        }
+
+        .close-contact:hover {
+            color: var(--teal-water);
+        }
+
+        .contact-content {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--olive-green);
+        }
+
+        .modal-socials {
+            margin-top: 30px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .contact-content .modal-socials a {
+            color:  var(--navy-blue); /* Dark text for the white background */
+        }
+
+        .modal-socials a:hover {
+            color: var(--teal-water);
+        }
+
 
         /* --- GALLERY MODAL STYLES --- */
         .gallery-modal {
@@ -478,7 +560,7 @@ text-transform: uppercase;
                 width: 100%;
             }
 
-            .hero { padding: 80px 20px; }
+            .hero { padding: 40px 20px; }
             .hero h1 { font-size: 2.2rem; }
             
             .gallery-prev { left: 10px; z-index: 10; background: rgba(0,0,0,0.5); }
@@ -506,7 +588,7 @@ text-transform: uppercase;
                         <li><a href="{{ url_for('pet_taxi') }}" data-translate="nav-taxi">Pet Taxi</a></li>                  
                         <li><a href="{{ url_for('home') }}#about" data-translate="nav-about">About</a></li>
                         <li><a onclick="openGallery(event)" data-translate="nav-gallery">Gallery</a></li>           
-                        <li><a href="#contact" class="btn" data-translate="nav-book">Get in touch</a></li>
+                        <li><a onclick="openContact(event)" class="btn" data-translate="nav-book">Get in touch</a></li>
                     </ul>
                 <div class="lang-icons">
                     <button class="lang-btn" onclick="translatePage('pt')" title="Português">
@@ -524,9 +606,9 @@ text-transform: uppercase;
     </header>
 
     <section class="hero">
-        <span class="tagline" data-translate="hero-tag" style="color:#dbffd6;")>Explore. Play. Return Happy.</span>        
+        <span class="tagline" data-translate="hero-tag" style="color:#ffe8c7;")>Explore.. Play.. Return Happy &#128522;</span>        
         <p data-translate="hero-desc">We take your dog on full-day wilderness tours and off-lead adventures, ensuring they get the exercise, socialisation and nature they crave while you focus on your day.</p>
-        <a href="https://beta.offlead-adventures.pt/#contact" class="btn" data-translate="hero-btn">Schedule an Adventure</a>
+      <a onclick="openContact(event)" class="btn" data-translate="hero-btn">Schedule an Adventure</a>
     </section>
 
     <section id="about" class="intro-section">
@@ -545,7 +627,7 @@ text-transform: uppercase;
             </div>
             <div class="card">
                 <div class="card-icon">🐾</div>
-                <h3 data-translate="card2-title">Pack Socialization</h3>
+                <h3 data-translate="card2-title">Pack Socialisation</h3>
                 <p data-translate="card2-desc">We carefully curate small groups of compatible dogs. Your dog will build confidence, learn healthy play, and make lifelong furry friends.</p>
             </div>
             <div class="card">
@@ -573,6 +655,32 @@ text-transform: uppercase;
 
         <p style="color: #FFFFFF; font-size: 1.0rem; margin-bottom: 0px; border: 0px" data-translate="footer-copy">© 2026 Offlead Adventures. All rights reserved.</p>
     </footer>
+
+    <div id="contactModal" class="contact-modal">
+        <span class="close-contact" onclick="closeContact()">×</span>
+        <div class="contact-content">
+            <h2 style="color: var(--navy-blue); margin-bottom: 20px;" data-translate="contact-title">Ready for an adventure?</h2>
+            
+            <form id="contactForm" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <input type="text" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Tell us about your dog..." rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%; border: none;">Send Message</button>
+            </form>
+
+            <div class="social-icons modal-socials">
+                <a href="https://wa.me/" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://facebook.com/" target="_blank" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://instagram.com/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
 
     <div id="galleryModal" class="gallery-modal">
         <span class="close-gallery" onclick="closeGallery()">×</span>
@@ -774,5 +882,33 @@ text-transform: uppercase;
                 closeGallery();
             }
         });
+
+        /* --- CONTACT MODAL JAVASCRIPT --- */
+        const contactModal = document.getElementById('contactModal');
+
+        function openContact(e) {
+            if(e) e.preventDefault();
+            contactModal.classList.add('show');
+        }
+
+        function closeContact() {
+            contactModal.classList.remove('show');
+        }
+
+        // Close when clicking outside the modal content
+        contactModal.addEventListener('click', function(e) {
+            if (e.target === contactModal) {
+                closeContact();
+            }
+        });
+
+        // Dummy submission handler
+        function submitForm(e) {
+            e.preventDefault();
+            alert("Thank you! Your message has been sent.");
+            e.target.reset(); // Clears the form inputs
+            closeContact(); // Closes the modal
+        }
+
     </script>
 </body></html>
