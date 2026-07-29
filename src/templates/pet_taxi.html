@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Taxi | Offlead Adventures</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css">
+
+    <style>
+        /* --- COLOR PALETTE & VARIABLES --- */
+        :root {
+            --navy-blue: #1f252b;
+            --olive-green: #61c378;
+            --teal-water: #806e40;
+            --light-bg: #f9faf8;
+            --white: #ffffff;
+            --text-dark: #444238;
+            --text-light: #f4f4f4;
+        }
+
+        /* --- GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--navy-blue);
+            margin-bottom: 15px;
+        }
+
+        h1 { font-size: 3rem; line-height: 1.2; }
+        h2 { font-size: 2.2rem; text-align: center; margin-bottom: 40px; }        
+        p { margin-bottom: 20px; font-size: 1.1rem; color: #555; }
+
+        /* --- NAVIGATION --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.25rem 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            flex-shrink: 0;
+            margin-right: 15px;
+        }
+
+        .logo img {
+            max-height: 85px;
+            height: auto;
+            display: block;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li a {
+            font-weight: 600;
+            color: var(--navy-blue);
+            transition: color 0.1s ease;
+            text-transform: uppercase;
+            font-size: 1.0rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .nav-links li a:hover {
+            color: var(--olive-green);
+        }
+
+        .btn {
+            background-color: var(--olive-green);
+            color: var(--white) !important;
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: inline-block;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .btn:hover {
+            background-color: var(--olive-green);
+            transform: translateY(-2px);
+        }
+
+        .lang-icons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            border-left: 2px solid #eee;
+            padding-left: 12px;
+            margin-left: 12px;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .lang-btn:hover {
+            transform: scale(1.25);
+        }
+
+        .flag-icon {
+            width: 25px;
+            height: auto;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            display: block;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            color: var(--navy-blue);
+            cursor: pointer;
+        }
+
+        /* --- HERO SECTION (PET TAXI SPECIFIC) --- */
+        .hero {
+            /* Beautiful image of a dog looking out a car window */
+            background: linear-gradient(rgba(31, 37, 43, 0.7), rgba(31, 37, 43, 0.7)), url('https://images.unsplash.com/photo-1535930891776-0c2dfb7fda1a?auto=format&fit=crop&w=1920&q=80') center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 120px 20px;
+        }
+
+        .hero h1 { color: var(--white); margin-bottom: 20px; }
+        
+        .hero p {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+        }
+
+        .hero .tagline {
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--olive-green);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .hero .btn {
+            background-color: var(--teal-water);
+            font-size: 1.1rem;
+            padding: 14px 32px;
+        }
+
+        .hero .btn:hover {
+            background-color: var(--white);
+            color: var(--navy-blue) !important;
+        }
+
+        /* --- CONTENT SECTIONS --- */
+        .section-wrapper {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-wrapper.bg-white {
+            background-color: var(--white);
+            max-width: 100%;
+        }
+
+        .section-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .intro-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+        }
+
+        /* --- GRID LAYOUTS --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-item {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            border-left: 5px solid var(--olive-green);
+            transition: transform 0.2s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateX(5px);
+        }
+
+        .feature-item i {
+            color: var(--olive-green);
+            font-size: 1.8rem;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .feature-item h4 {
+            margin-bottom: 0;
+            font-size: 1.1rem;
+            color: var(--navy-blue);
+        }
+
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .destination-card {
+            background: var(--light-bg);
+            border: 1px solid #eaeaea;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        .destination-card:hover {
+            background: var(--teal-water);
+            color: var(--white);
+            border-color: var(--teal-water);
+        }
+
+        .destination-card i {
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        /* --- FOOTER & SOCIALS --- */
+        footer {
+            background-color: var(--navy-blue);
+            color: var(--white);
+            text-align: center;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .social-icons {
+            margin: 10px 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .social-icons a {
+            color: var(--white);
+            font-size: 1.8rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--teal-water);
+            transform: translateY(-3px);
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 1024px) {
+            .menu-toggle { display: block; }
+            .logo img { max-height: 50px; }
+            .nav-container { padding: 5px 15px; }
+            
+            .nav-wrapper {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                padding: 20px 0;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                border-top: 1px solid #eee;
+            }
+
+            .nav-wrapper.active { display: flex; }
+            
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .lang-icons {
+                border-left: none;
+                border-top: 1px solid #eee;
+                padding-left: 0; padding-top: 15px;
+                margin-left: 0; margin-top: 15px;
+                justify-content: center;
+                width: 100%;
+            }
+
+            .hero { padding: 80px 20px; }
+            .hero h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="/static/index_files/MAIN_LOGO.png" alt="Offlead Adventures Logo">
+            </a>
+
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <div class="nav-wrapper" id="nav-wrapper">
+                <ul class="nav-links">
+                    <li><a href="{{ url_for('home') }}" data-translate="nav-home">Hello</a></li>
+                    
+                    <li><a href="{{ url_for('home') }}#adventures" data-translate="nav-adv">Adventures</a></li>
+                    
+                    <li><a href="{{ url_for('pet_taxi') }}" data-translate="nav-taxi">Pet Taxi</a></li>
+                    
+                    <li><a href="{{ url_for('home') }}#about" data-translate="nav-about">About</a></li>
+                    
+                    <li><a href="#contact" class="btn" data-translate="nav-book">Get in touch</a></li>
+                </ul>
+                <div class="lang-icons">
+                    <button class="lang-btn" title="Português"><span class="fi fi-pt"></span></button>
+                    <button class="lang-btn" title="Español"><span class="fi fi-es"></span></button>
+                    <button class="lang-btn" title="English"><span class="fi fi-gb"></span></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <span class="tagline">Pet Taxi</span>
+        <h1>Safe, reliable transport for your dog's journey.</h1>
+        <p>Whether it's a visit to the vet, groomer, daycare, boarding facility, or simply getting from A to B, Off Lead Adventures provides a professional pet transport service you can trust.</p>
+        <p style="color: var(--olive-green); font-weight: bold; font-size: 1.1rem; margin-top: -15px;">Door-to-door collection and drop-off throughout Lisbon.</p>
+        <a href="#contact" class="btn" style="margin-top: 20px;">Book a Pet Taxi</a>
+    </section>
+
+    <div class="section-wrapper">
+        <div class="section-inner">
+            <h2 style="color: var(--teal-water);">Why Choose Our Pet Taxi?</h2>
+            <div class="intro-text">
+                <p>We know that transporting your dog isn't just about getting them somewhere—it's about ensuring they feel safe, calm and cared for throughout the journey. Your dog's comfort and safety are our priority from the moment we collect them until they arrive at their destination.</p>
+            </div>
+            
+            <h3 style="text-align: center; margin-bottom: 30px;">Every journey includes:</h3>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fa-solid fa-house-chimney"></i>
+                    <h4>Door-to-door collection and drop-off</h4>
+                </div>
+                <div class="feature-item">
+                    <i class="fa-solid fa-shield-dog"></i>
+                    <h4>Secure harness and seat belt system</h4>
+                </div>
+                <div class="feature-item">
+                    <i class="fa-solid fa-snowflake"></i>
+                    <h4>Comfortable, air-conditioned vehicle</h4>
+                </div>
+                <div class="feature-item">
+                    <i class="fa-solid fa-faucet-drip"></i>
+                    <h4>Fresh drinking water available at all times</h4>
+                </div>
+                <div class="feature-item">
+                    <i class="fa-solid fa-heart"></i>
+                    <h4>Calm, patient handling</h4>
+                </div>
+                <div class="feature-item">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                    <h4>Regular updates if requested</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-wrapper bg-white">
+        <div class="section-inner">
+            <h2>We Can Take Your Dog To</h2>
+            <div class="destinations-grid">
+                <div class="destination-card">
+                    <i class="fa-solid fa-stethoscope"></i>
+                    Veterinary appointments
+                </div>
+                <div class="destination-card">
+                    <i class="fa-solid fa-scissors"></i>
+                    Grooming appointments
+                </div>
+                <div class="destination-card">
+                    <i class="fa-solid fa-sun"></i>
+                    Daycare
+                </div>
+                <div class="destination-card">
+                    <i class="fa-solid fa-building"></i>
+                    Boarding kennels
+                </div>
+                <div class="destination-card">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    Training sessions
+                </div>
+                <div class="destination-card">
+                    <i class="fa-solid fa-bed"></i>
+                    Dog-friendly hotels
+                </div>
+                <div class="destination-card">
+                    <i class="fa-solid fa-users"></i>
+                    Family or friends
+                </div>
+                <div class="destination-card">
+                    <i class="fa-solid fa-house-medical"></i>
+                    Home after surgery<br><span style="font-size: 0.8rem; font-weight: 400;">(where appropriate)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-wrapper">
+        <div class="section-inner" style="text-align: center;">
+            <h2 style="color: var(--olive-green);">Travel With Peace of Mind</h2>
+            <p style="max-width: 700px; margin: 0 auto; font-size: 1.2rem;">
+                Whether you're working, travelling or simply unable to transport your dog yourself we'll make sure they arrive safely and comfortably. <br>Every journey is handled with the same care and professionalism as our adventure days.
+            </p>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #FFFFFF">Ready to book a ride?</h3>
+            <p style="color: #FFFFFF; margin-bottom: 15px;">Contact us today to arrange your pet's transport.</p>
+            <a href="mailto:offleadadventures@gmail.com" class="btn" style="background-color: var(--olive-green);">Email Us</a>
+        </div>
+        
+        <div class="social-icons">
+            <a href="https://wa.me/" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://facebook.com/" target="_blank" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://instagram.com/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://google.com/" target="_blank" title="Google Business"><i class="fa-brands fa-google"></i></a>
+        </div>
+
+        <p style="color: #FFFFFF; font-size: 1.0rem; margin-bottom: 0px; border: 0px">© 2026 Offlead Adventures. All rights reserved.</p>
+    </footer>
+
+    <script>
+        /* --- MOBILE MENU JAVASCRIPT --- */
+        const mobileMenuBtn = document.getElementById('mobile-menu');
+        const navWrapper = document.getElementById('nav-wrapper');
+        const menuIcon = mobileMenuBtn.querySelector('i');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navWrapper.classList.toggle('active');
+            
+            if (navWrapper.classList.contains('active')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            } else {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+    </script>
+</body>
+</html>

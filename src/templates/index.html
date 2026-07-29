@@ -185,7 +185,7 @@
             font-weight: bold;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: #575244;
+            color: #444238;
             margin-bottom: 10px;
             display: block;
         }
@@ -476,14 +476,17 @@
             </div>
 
             <div class="nav-wrapper" id="nav-wrapper">
-                <ul class="nav-links">
-                    <li><a href="https://beta.offlead-adventures.pt/#" data-translate="nav-home">Hello</a></li>
-                    <li><a href="https://beta.offlead-adventures.pt/#adventures" data-translate="nav-adv">Adventures</a></li>
-                    <li><a href="https://beta.offlead-adventures.pt/#adventures" data-translate="nav-taxi">Pet Taxi</a></li>
-                    <li><a onclick="openGallery(event)" data-translate="nav-gallery">Gallery</a></li>
-                    <li><a href="https://beta.offlead-adventures.pt/#about" data-translate="nav-about">About</a></li>
-                    <li><a href="https://beta.offlead-adventures.pt/#contact" class="btn" data-translate="nav-book">Get in touch</a></li>
-                </ul>
+                    <ul class="nav-links">
+                        <li><a href="{{ url_for('home') }}" data-translate="nav-home">Hello</a></li>
+                        
+                        <li><a href="{{ url_for('home') }}#adventures" data-translate="nav-adv">Adventures</a></li>
+                        
+                        <li><a href="{{ url_for('pet_taxi') }}" data-translate="nav-taxi">Pet Taxi</a></li>
+                        
+                        <li><a href="{{ url_for('home') }}#about" data-translate="nav-about">About</a></li>
+                        
+                        <li><a href="#contact" class="btn" data-translate="nav-book">Get in touch</a></li>
+                    </ul>
                 <div class="lang-icons">
                     <button class="lang-btn" onclick="translatePage('pt')" title="Português">
                         <span class="fi fi-pt"></span>
