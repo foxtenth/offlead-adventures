@@ -6,17 +6,16 @@
     <title>Offlead Adventures | Ultimate Dog Day Outs</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css">
 
     <style>
         /* --- COLOR PALETTE & VARIABLES --- */
         :root {
-            --navy-blue: #1f252b;
-            --olive-green: #61c378;
-            --teal-water: #806e40;
+            --navy-blue: #111d2a;
+            --olive-green: #677843;
+            --teal-water: #5c8f8e;
             --light-bg: #f9faf8;
             --white: #ffffff;
-            --text-dark: #444238;
+            --text-dark: #333333;
             --text-light: #f4f4f4;
         }
 
@@ -61,7 +60,7 @@
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0.25rem 50px;
+            padding: 10px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -74,7 +73,7 @@
         }
 
         .logo img {
-            max-height: 85px;
+            max-height: 80px;
             height: auto;
             display: block;
         }
@@ -137,15 +136,15 @@
         .lang-btn {
             background: none;
             border: none;
-            font-size: 1.2rem;
             cursor: pointer;
             transition: transform 0.2s ease;
             display: flex;
             align-items: center;
+            padding: 0;
         }
 
         .lang-btn:hover {
-            transform: scale(1.25);
+            transform: scale(1.20);
         }
 
         .flag-icon {
@@ -166,7 +165,7 @@
 
         /* --- HERO SECTION --- */
         .hero {
-            background: linear-gradient(rgba(255, 255, 255, 0.15), rgba(146, 125, 68, 0.8)), url('https://images.unsplash.com/photo-1544568100-847a948585b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            background: linear-gradient(rgba(255, 255, 255, 0.15), rgba(103, 120, 67, 0.8)), url('https://images.unsplash.com/photo-1544568100-847a948585b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
             color: var(--white);
             text-align: center;
             padding: 120px 20px;
@@ -185,7 +184,7 @@
             font-weight: bold;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: #575244;
+            color: #d1dfb6;
             margin-bottom: 10px;
             display: block;
         }
@@ -235,7 +234,7 @@
             max-width: 350px;
             text-align: center;
             box-shadow: 0 5px 15px rgba(0,0,0,0.06);
-            border-bottom: 4px solid var(--olive-green);
+            border-bottom: 4px solid var(--teal-water);
             transition: transform 0.3s ease;
         }
 
@@ -451,7 +450,7 @@
                 margin-left: 0;
                 margin-top: 15px;
                 justify-content: center;
-                width: 100%;
+                width: 80%;
             }
 
             .hero { padding: 80px 20px; }
@@ -477,22 +476,22 @@
 
             <div class="nav-wrapper" id="nav-wrapper">
                 <ul class="nav-links">
-                    <li><a href="https://beta.offlead-adventures.pt/#" data-translate="nav-home">Hello</a></li>
+                    <li><a href="https://beta.offlead-adventures.pt/#" data-translate="nav-home">Home</a></li>
                     <li><a href="https://beta.offlead-adventures.pt/#adventures" data-translate="nav-adv">Adventures</a></li>
                     <li><a href="https://beta.offlead-adventures.pt/#adventures" data-translate="nav-taxi">Pet Taxi</a></li>
                     <li><a onclick="openGallery(event)" data-translate="nav-gallery">Gallery</a></li>
-                    <li><a href="https://beta.offlead-adventures.pt/#about" data-translate="nav-about">About</a></li>
-                    <li><a href="https://beta.offlead-adventures.pt/#contact" class="btn" data-translate="nav-book">Get in touch</a></li>
+                    <li><a href="https://beta.offlead-adventures.pt/#about" data-translate="nav-about">About us</a></li>
+                    <li><a href="https://beta.offlead-adventures.pt/#contact" class="btn" data-translate="nav-book">Book a Day Out</a></li>
                 </ul>
                 <div class="lang-icons">
-                    <button class="lang-btn" onclick="translatePage('pt')" title="Português">
-                        <span class="fi fi-pt"></span>
+                    <button class="lang-btn" onclick="translatePage(&#39;pt&#39;)" title="Português">
+                        <img src="/static/index_files/pt.png" alt="Português" class="flag-icon">
                     </button>
-                    <button class="lang-btn" onclick="translatePage('es')" title="Español">
-                        <span class="fi fi-es"></span>
+                    <button class="lang-btn" onclick="translatePage(&#39;es&#39;)" title="Español">
+                        <img src="/static/index_files/es.png" alt="Español" class="flag-icon">
                     </button>
-                    <button class="lang-btn" onclick="translatePage('en')" title="English">
-                        <span class="fi fi-gb"></span>
+                    <button class="lang-btn" onclick="translatePage(&#39;en&#39;)" title="English">
+                        <img src="/static/index_files/gb.png" alt="English" class="flag-icon" style="width: 10% !important; height: auto;">
                     </button>
                 </div>
             </div>
@@ -526,10 +525,14 @@
                 <p data-translate="card2-desc">We carefully curate small groups of compatible dogs. Your dog will build confidence, learn healthy play, and make lifelong furry friends.</p>
             </div>
             <div class="card">
+                <div class="card-icon">🚐</div>
+                <h3 data-translate="card3-title">Door-to-Door Chauffeur</h3>
+                <p data-translate="card3-desc">You don't have to lift a finger. We collect your dog in our safe, air-conditioned vehicle in the morning and return them happy and tired.</p>
+            </div>
+            <div class="card">
                 <div class="card-icon">🚕</div>
-                <h3 data-translate="card3-title">Pet Taxi & Door-to-Door Chauffeur</h3>
+                <h3 data-translate="card4-title">Pet Taxi</h3>
                 <p data-translate="card4-desc">Take dogs to vet appointments, to restaurants or anywhere you wish. One to One.</p>
-                <p>You don't have to lift a finger. We collect your dog in our safe, air-conditioned vehicle in the morning and return them happy and tired.</p>
             </div>
         </div>
     </section>
@@ -538,7 +541,7 @@
         <div style="max-width: 600px; margin: 0 auto;">
             <h3 style="color: #FFFFFF" data-translate="contact-title">Ready for an adventure?</h3>
             <p style="color: #FFFFFF; margin-bottom: 15px;" data-translate="contact-desc">Contact us today to arrange a meet-and-greet.</p>
-            <a href="mailto:offleadadventures@gmail.com" class="btn" style="background-color: var(--olive-green);" data-translate="contact-btn">Email Us</a>
+            <a href="mailto:offleadadventures@gmail.com" class="btn" style="background-color: var(--teal-water);" data-translate="contact-btn">Email Us</a>
         </div>
         
         <div class="social-icons">
@@ -564,12 +567,12 @@
     <script>
         const translations = {
             "en": {
-                "nav-home": "Hello",
+                "nav-home": "Home",
                 "nav-about": "About Us",
-                "nav-adv": "Adventures",
+                "nav-adv": "Offlead Adventures",
                 "nav-gallery": "Gallery",
                 "nav-taxi": "Pet Taxi",
-                "nav-book": "Get in touch",
+                "nav-book": "Book a Day Out",
                 "hero-tag": "Explore. Play. Return Happy.",
                 "hero-title": "The Ultimate Off-Lead Day Out",
                 "hero-desc": "We take your dog on full-day wilderness tours and off-lead adventures, ensuring they get the exercise, socialisation and nature they crave while you focus on your day.",
@@ -752,4 +755,6 @@
             }
         });
     </script>
+
+
 </body></html>
