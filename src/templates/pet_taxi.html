@@ -13,7 +13,7 @@
         :root {
             --navy-blue: #1f252b;
             --olive-green: #61c378;
-            --teal-water: #1ca4ff;
+            --teal-water: #22a7ff;
             --light-bg: #f9faf8;
             --white: #ffffff;
             --text-dark: #444238;
@@ -595,7 +595,7 @@
 
     <header>
         <div class="nav-container">
-            <a href="index.html" class="logo">
+            <a href="start.html" class="logo">
                 <img src="/static/index_files/MAIN_LOGO.png" alt="Offlead Adventures Logo">
             </a>
 
@@ -605,8 +605,7 @@
 
             <div class="nav-wrapper" id="nav-wrapper">
                 <ul class="nav-links">
-                    <li><a href="{{ url_for('home') }}" data-translate="nav-home">Hello</a></li>        
-                    <li><a href="{{ url_for('home') }}#adventures" data-translate="nav-adv">Adventures</a></li>                   
+                    <li><a href="{{ url_for('home') }}" data-translate="nav-home"><i class="fa-solid fa-house" style="margin-right: 7px;"></i>Offlead-Adventures</a></li>                                     
                     <li><a href="{{ url_for('pet_taxi') }}" data-translate="nav-taxi">Pet Taxi</a></li>               
                     <li><a href="{{ url_for('home') }}#about" data-translate="nav-about">About</a></li>
                     <li><a onclick="openGallery(event)" data-translate="nav-gallery">Gallery</a></li>           
