@@ -503,6 +503,28 @@
             transform: translateY(-3px);
         }
 
+        .floating-badge {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background-color: var(--navy-blue);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            z-index: 999;
+            transform: rotate(-3deg);
+            border: 2px solid var(--teal-water);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+                0% { transform: translateY(0px) rotate(-3deg); }
+                50% { transform: translateY(-10px) rotate(-1deg); }
+                100% { transform: translateY(0px) rotate(-3deg); }
+            }
+
         /* --- RESPONSIVE DESIGN --- */
         @media (max-width: 1024px) {
             .menu-toggle {
@@ -516,6 +538,20 @@
                 transform: none;
 		transform: none;
        		margin-bottom: 5px;  /* Reduces space below the tagline */
+
+		.floating-badge {
+     		   bottom: 20px;
+      		  left: 20px;
+      		  padding: 10px 20px;
+     		   font-size: 0.9rem;
+   		 }
+
+         @keyframes float {
+                0% { transform: translateY(0px) rotate(-1deg); }
+                50% { transform: translateY(-5px) rotate(0deg); }
+                100% { transform: translateY(0px) rotate(-1deg); }
+            }
+		
             }
 
             /* Perfectly center text using absolute positioning relative to nav-container */
@@ -586,6 +622,16 @@
             .gallery-next { right: 10px; z-index: 10; background: rgba(0,0,0,0.5); }
             .gallery-content { width: 100%; height: 50vh; }
         }
+
+        @media (max-width: 480px) {
+             .floating-badge {
+                bottom: 10px;
+                left: 10px;
+                padding: 6px 12px;
+                font-size: 0.75rem;
+         }
+}
+
     </style>
 </head>
 <body>
@@ -624,6 +670,10 @@
             </div>
         </div>
     </header>
+
+    <div class="floating-badge">
+    <i class="fa-solid fa-calendar-check" style="margin-right: 8px;"></i> Booking for Fall 2026
+    </div>
 
     <section class="hero">
       <span class="tagline" data-translate="hero-tag" style="color:#79d68f">Explore. Play. Return Happy.</span>
