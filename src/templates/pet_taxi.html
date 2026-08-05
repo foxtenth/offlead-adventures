@@ -79,6 +79,10 @@
             display: block;
         }
 
+	.mobile-logo-text {
+            display: none;
+        }
+
         .nav-wrapper {
             display: flex;
             align-items: center;
@@ -552,7 +556,7 @@
         /* --- RESPONSIVE DESIGN --- */
         @media (max-width: 1024px) {
             .menu-toggle { display: block; }
-            .logo img { max-height: 50px; }
+            .logo img { max-height: 85px; }
             .nav-container { padding: 5px 15px; }
             
             .nav-wrapper {
@@ -586,6 +590,24 @@
                 width: 100%;
             }
 
+		.mobile-logo-text {
+                display: block; /* <-- Make sure this line is here */
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 1.00rem;
+                font-weight: 700;
+                color: var(--navy-blue);
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                text-align: center;
+                white-space: nowrap;
+                pointer-events: none;
+                max-width: 55%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
             .hero { padding: 80px 20px; }
             .hero h1 { font-size: 2.2rem; }
         }
@@ -598,6 +620,8 @@
             <a href="start.html" class="logo">
                 <img src="/static/index_files/MAIN_LOGO.png" alt="Offlead Adventures Logo">
             </a>
+		
+		 <div class="mobile-logo-text">Offlead Adventures</div>
 
             <div class="menu-toggle" id="mobile-menu">
                 <i class="fa-solid fa-bars"></i>
