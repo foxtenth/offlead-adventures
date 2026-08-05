@@ -23,7 +23,7 @@
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            box-sizing: border-box;                              
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
@@ -257,17 +257,69 @@
             max-width: 350px;
             text-align: center;
             box-shadow: 0 5px 15px rgba(0,0,0,0.06);
-            border-bottom: 6px solid var(--olive-green);
             transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-bg {
+            position: absolute;
+            right: -10px;
+            bottom: -10px;
+            width: 48%;
+            height: 48%;
+            opacity: 0.12;
+            pointer-events: none;
+            z-index: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-bg svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .card > *:not(.card-bg) {
+            position: relative;
+            z-index: 1;
         }
 
         .card:hover { transform: translateY(-10px); }
-        .card-icon {
-            font-size: 2.2rem;
-            color: var(--olive-green);
-            margin-bottom: 15px;
-        }
+        .card-icon { font-size: 3rem; margin-bottom: 20px; }
         .card h3 { font-size: 1.4rem; }
+
+        /* --- CARD SPECIFIC HUES & ACCENTS --- */
+        .card.card-wilderness {
+            border-bottom: 6px solid #00ff44;
+        }
+        .card.card-wilderness .card-icon {
+            color: #47d36d;
+        }
+        .card.card-wilderness .card-bg svg {
+            fill: #44dd6d;
+        }
+
+        .card.card-social {
+            border-bottom: 6px solid #0fdbff;
+        }
+        .card.card-social .card-icon {
+            color: #36c6ff;
+        }
+        .card.card-social .card-bg svg {
+            fill: #06cbd9;
+        }
+
+        .card.card-taxi {
+            border-bottom: 6px solid #ffdc2e;
+        }
+        .card.card-taxi .card-icon {
+            color: #ffc12f;
+        }
+        .card.card-taxi .card-bg svg {
+            fill: #ffbe31;
+        }
         
        /* --- CONTACT MODAL STYLES --- */
         .contact-modal {
@@ -537,25 +589,17 @@
 
 		.hero { padding: 25px 15px; }
             .hero h1 { font-size: 2.2rem; margin-bottom: 10px;}
-	    .hero p { margin-bottom: 20px; /* Reduces space below the description paragraph */}
+	    .hero p { margin-bottom: 20px; }
             .hero .tagline {
                 transform: none;
-		transform: none;
-       		margin-bottom: 5px;  /* Reduces space below the tagline */
-
-		.floating-badge {
-     		   bottom: 20px;
-      		  left: 20px;
-      		  padding: 10px 20px;
-     		   font-size: 0.9rem;
-   		 }
-
-         @keyframes float {
-                0% { transform: translateY(0px) rotate(-1deg); }
-                50% { transform: translateY(-5px) rotate(0deg); }
-                100% { transform: translateY(0px) rotate(-1deg); }
+       		    margin-bottom: 5px;  
             }
-		
+
+            .floating-badge {
+                bottom: 20px;
+                left: 20px;
+                padding: 10px 20px;
+                font-size: 0.9rem;
             }
 
             /* Perfectly center text using absolute positioning relative to nav-container */
@@ -571,7 +615,7 @@
                 letter-spacing: 0.5px;
                 text-align: center;
                 white-space: nowrap;
-                pointer-events: none; /* Allows clicks to pass through if needed */
+                pointer-events: none;
                 max-width: 55%;
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -697,19 +741,36 @@
     </section>
 
     <section id="adventures" class="services-section">
-        <h2 data-translate="serv-title" style="color:var(--teal-water)">Our Day Out Packages</h2>
+        <h2 data-translate="serv-title" style="color:#b3ada5">What We Offer</h2>
         <div class="services-container">
-            <div class="card">
+            <div class="card card-wilderness">
+                <div class="card-bg">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12,2L2,19H7L5,22H19L17,19H22L12,2M12,5.84L17.76,16H14.5L16.5,18H13V21H11V18H7.5L9.5,16H6.24L12,5.84Z"/>
+                    </svg>
+                </div>
                 <div class="card-icon"><i class="fa-solid fa-tree"></i></div>
                 <h3 data-translate="card1-title">Wilderness Day Tours</h3>
                 <p data-translate="card1-desc">Full-day excursions to safe, rural locations. We explore forests, hills, and safe water spots, giving your dog hours of off-lead freedom.</p>
             </div>
-            <div class="card">
+
+            <div class="card card-social">
+                <div class="card-bg">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12,3C10.34,3 9,4.34 9,6C9,7.66 10.34,9 12,9C13.66,9 15,7.66 15,6C15,4.34 13.66,3 12,3M5,6C3.34,6 2,7.34 2,9C2,10.66 3.34,12 5,12C6.66,12 8,10.66 8,9C8,7.34 6.66,6 5,6M19,6C17.34,6 16,7.34 16,9C16,10.66 17.34,12 19,12C20.66,12 22,10.66 22,9C22,7.34 20.66,6 19,6M12,11C9.33,11 4,12.33 4,15V18H20V15C20,12.33 14.67,11 12,11Z"/>
+                    </svg>
+                </div>
                 <div class="card-icon"><i class="fa-solid fa-paw"></i></div>
                 <h3 data-translate="card2-title">Pack Socialisation</h3>
                 <p data-translate="card2-desc">We carefully curate small groups of compatible dogs. Your dog will build confidence, learn healthy play, and make lifelong furry friends.</p>
             </div>
-            <div class="card">
+
+            <div class="card card-taxi">
+                <div class="card-bg">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18.92,6.01C18.72,5.42 18.16,5 17.5,5H11C10.4,5 9.87,5.36 9.64,5.92L7.33,11H4C2.9,11 2,11.9 2,13V16C2,16.55 2.45,17 3,17H4C4,18.66 5.34,20 7,20C8.66,20 10,18.66 10,17H14C14,18.66 15.34,20 17,20C18.66,20 20,18.66 20,17H21C21.55,17 22,16.55 22,16V11.5L18.92,6.01M7,18.5C6.17,18.5 5.5,17.83 5.5,17C5.5,16.17 6.17,15.5 7,15.5C7.83,15.5 8.5,16.17 8.5,17C8.5,17.83 7.83,18.5 7,18.5M17,18.5C16.17,18.5 15.5,17.83 15.5,17C15.5,16.17 16.17,15.5 17,15.5C17.83,15.5 18.5,16.17 18.5,17C18.5,17.83 17.83,18.5 17,18.5M20.5,15H19.26C18.84,14.1 17.97,13.5 17,13.5C16.03,13.5 15.16,14.1 14.74,15H9.26C8.84,14.1 7.97,13.5 7,13.5C6.03,13.5 5.16,14.1 4.74,15H3.5V13C3.5,12.72 3.72,12.5 4,12.5H7.5L9.62,8H17.5L20.5,13.5V15Z"/>
+                    </svg>
+                </div>
                 <div class="card-icon"><i class="fa-solid fa-taxi"></i></div>
                 <h3 data-translate="card3-title">Pet Taxi & Door-to-Door Chauffeur</h3>
                 <p data-translate="card4-desc">Take dogs to vet appointments, to restaurants or anywhere you wish. One to One.</p>
