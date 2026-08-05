@@ -627,9 +627,9 @@
 
             <div class="nav-wrapper" id="nav-wrapper">
                 <ul class="nav-links">
-                    <li><a href="start.html"><i class="fa-solid fa-house" style="margin-right: 7px;"></i>Offlead-Adventures</a></li>                                     
-                    <li><a href="pet_taxi.html">Pet Taxi</a></li>               
-                    <li><a href="start.html#about">About</a></li>
+                        <li><a href="{{ url_for('home') }}" data-translate="nav-home"><i class="fa-solid fa-house" style="margin-right: 7px;"></i>Offlead-Adventures</a></li>                                     
+                        <li><a href="{{ url_for('pet_taxi') }}" data-translate="nav-taxi">Pet Taxi</a></li>                  
+                        <li><a href="{{ url_for('about') }}" data-translate="nav-about">About</a></li>
                     <li><a onclick="openGallery(event)">Gallery</a></li>           
                     <li><a onclick="openContact(event)" class="btn">Get in touch</a></li>
                 </ul>
