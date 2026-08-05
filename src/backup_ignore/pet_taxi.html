@@ -13,7 +13,7 @@
         :root {
             --navy-blue: #1f252b;
             --olive-green: #61c378;
-            --teal-water: #22a7ff;
+            --teal-water: #61c378;
             --light-bg: #f9faf8;
             --white: #ffffff;
             --text-dark: #444238;
@@ -70,7 +70,6 @@
         .logo {
             flex-shrink: 0;
             margin: 0px 0px;
-
         }
 
         .logo img {
@@ -79,7 +78,7 @@
             display: block;
         }
 
-	.mobile-logo-text {
+        .mobile-logo-text {
             display: none;
         }
 
@@ -95,7 +94,7 @@
             align-items: center;
         }
 
-         .nav-links li a:not(.btn) {
+        .nav-links li a:not(.btn) {
             font-weight: 600;
             color: var(--navy-blue);
             transition: color 0.1s ease;
@@ -126,17 +125,15 @@
             color: var(--white) !important;
             padding: 10px 20px;
             border-radius: 30px;
-            font-weight: 600; /* Standardized weight */
+            font-weight: 600; 
             display: inline-block;
             cursor: pointer;
             white-space: nowrap;
             transition: background-color 0.3s ease, transform 0.2s ease;
-
-            /* Prevents font snapping/weight shifting during transform animations */
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             backface-visibility: hidden;
-            transform: translateZ(0); /* Forces GPU layer upfront so hover doesn't trigger a re-render */
+            transform: translateZ(0); 
         }
 
         .btn:hover {
@@ -182,13 +179,18 @@
             cursor: pointer;
         }
 
-        /* --- HERO SECTION (PET TAXI SPECIFIC) --- */
+        /* --- HERO SECTION (PET TAXI SPECIFIC MATCHING START.HTML & ORIENTED LEFT) --- */
         .hero {
-            /* Beautiful image of a dog looking out a car window */
-            background: linear-gradient(rgba(31, 37, 43, 0.7), rgba(31, 37, 43, 0.7)), url('https://images.unsplash.com/photo-1535930891776-0c2dfb7fda1a?auto=format&fit=crop&w=1920&q=80') center/cover;
+            background: linear-gradient(rgba(17, 29, 42, 0.8), rgba(103, 120, 67, 0.8)), url('https://images.unsplash.com/photo-1544568100-847a948585b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
             color: var(--white);
-            text-align: center;
-            padding: 100px 20px;
+            text-align: left;
+            padding: 60px 20px;
+        }
+
+        .hero-content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 50px;
         }
 
         .hero h1 { color: var(--white); margin-bottom: 20px; }
@@ -197,14 +199,14 @@
             color: var(--text-light);
             font-size: 1.2rem;
             max-width: 800px;
-            margin: 0 auto 30px auto;
+            margin: 0 0 30px 0;
         }
 
         .hero .tagline {
             font-weight: bold;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--olive-green);
+            color: #79d68f;
             margin-bottom: 10px;
             display: block;
         }
@@ -384,7 +386,7 @@
         }
 
         .contact-content .modal-socials a {
-            color:  var(--navy-blue); /* Dark text for the white background */
+            color: var(--navy-blue);
         }
 
         .modal-socials a:hover {
@@ -478,7 +480,6 @@
             margin-top: 30px;
             max-width: 80%;
             overflow-x: auto;
-            /* FIX: Increased side padding to 10px so scaled border edges aren't clipped on the left or right */
             padding: 10px 10px;
             scrollbar-width: thin;
             scrollbar-color: var(--teal-water) rgba(255,255,255,0.1);
@@ -505,11 +506,8 @@
             transition: all 0.2s ease;
             flex-shrink: 0;
             display: block;
-
-            /* OPTION 3 FIX: Pre-allocate a 2px invisible border on all thumbnails */
             box-sizing: border-box;
             border: 3px solid transparent;
-
             backface-visibility: hidden;
         }
 
@@ -519,7 +517,6 @@
 
         .thumb-img.active {
             opacity: 1;
-            /* OPTION 3 FIX: Reveal active border color without shifting dimensions or clipping */
             border-color: #ffffff;
             transform: scale(1.05);
         }
@@ -590,8 +587,8 @@
                 width: 100%;
             }
 
-		.mobile-logo-text {
-                display: block; /* <-- Make sure this line is here */
+            .mobile-logo-text {
+                display: block;
                 position: absolute;
                 left: 50%;
                 transform: translateX(-50%);
@@ -608,7 +605,8 @@
                 text-overflow: ellipsis;
             }
 
-            .hero { padding: 80px 20px; }
+            .hero { padding: 40px 20px; text-align: left; }
+            .hero-content-wrapper { padding: 0 15px; }
             .hero h1 { font-size: 2.2rem; }
         }
     </style>
@@ -621,7 +619,7 @@
                 <img src="/static/index_files/MAIN_LOGO.png" alt="Offlead Adventures Logo">
             </a>
 		
-		 <div class="mobile-logo-text">Offlead Adventures</div>
+            <div class="mobile-logo-text">Offlead Adventures</div>
 
             <div class="menu-toggle" id="mobile-menu">
                 <i class="fa-solid fa-bars"></i>
@@ -629,11 +627,11 @@
 
             <div class="nav-wrapper" id="nav-wrapper">
                 <ul class="nav-links">
-                    <li><a href="{{ url_for('home') }}" data-translate="nav-home"><i class="fa-solid fa-house" style="margin-right: 7px;"></i>Offlead-Adventures</a></li>                                     
-                    <li><a href="{{ url_for('pet_taxi') }}" data-translate="nav-taxi">Pet Taxi</a></li>               
-                    <li><a href="{{ url_for('about') }}" data-translate="nav-about">About</a></li>
-                    <li><a onclick="openGallery(event)" data-translate="nav-gallery">Gallery</a></li>           
-                    <li><a onclick="openContact(event)" class="btn" data-translate="nav-book">Get in touch</a></li>
+                        <li><a href="{{ url_for('home') }}" data-translate="nav-home"><i class="fa-solid fa-house" style="margin-right: 7px;"></i>Offlead-Adventures</a></li>                                     
+                        <li><a href="{{ url_for('pet_taxi') }}" data-translate="nav-taxi">Pet Taxi</a></li>                  
+                        <li><a href="{{ url_for('about') }}" data-translate="nav-about">About</a></li>
+                    <li><a onclick="openGallery(event)">Gallery</a></li>           
+                    <li><a onclick="openContact(event)" class="btn">Get in touch</a></li>
                 </ul>
                 <div class="lang-icons">
                     <button class="lang-btn" title="Português"><span class="fi fi-pt"></span></button>
@@ -645,11 +643,13 @@
     </header>
 
     <section class="hero">
-        <span class="tagline">Pet Taxi & Door-to-Door Chauffeur</span>
-        <h1>Safe, reliable transport for your dog's journey.</h1>
-        <p>Whether it's a visit to the vet, groomer, daycare, boarding facility, or simply getting from A to B, Off Lead Adventures provides a professional pet transport service you can trust.</p>
-        <p style="color: var(--olive-green); font-weight: bold; font-size: 1.1rem; margin-top: -15px;">Door-to-door collection and drop-off throughout Lisbon.</p>
-          <a onclick="openContact(event)" class="btn" data-translate="hero-btn">Schedule a Pet Taxi</a>
+        <div class="hero-content-wrapper">
+            <span class="tagline">Pet Taxi & Door-to-Door Chauffeur</span>
+            <h1>Safe, reliable transport for your dog's journey.</h1>
+            <p>Whether it's a visit to the vet, groomer, daycare, boarding facility, or simply getting from A to B, Off Lead Adventures provides a professional pet transport service you can trust.</p>
+            <p style="color: #79d68f; font-weight: bold; font-size: 1.1rem; margin-top: -15px;">Door-to-door collection and drop-off throughout Lisbon.</p>
+            <a onclick="openContact(event)" class="btn">Schedule a Pet Taxi</a>
+        </div>
     </section>
 
     <div class="section-wrapper">
@@ -753,6 +753,7 @@
         </div>
 
         <p style="color: #FFFFFF; font-size: 1.0rem; margin-bottom: 0px; border: 0px">© 2026 Offlead Adventures. All rights reserved.</p>
+    </footer>
     
     <!-- CONTACT MODAL HTML -->
     <div id="contactModal" class="contact-modal">
@@ -791,11 +792,8 @@
         </div>
         <div class="thumbnail-roller" id="thumbnailRoller"></div>
     </div>
-    
-    </footer>
 
     <script>
-
         /* --- CONTACT MODAL JAVASCRIPT --- */
         const contactModal = document.getElementById('contactModal');
 
@@ -808,19 +806,17 @@
             contactModal.classList.remove('show');
         }
 
-        // Close when clicking outside the modal content
         contactModal.addEventListener('click', function(e) {
             if (e.target === contactModal) {
                 closeContact();
             }
         });
 
-        // Dummy submission handler
         function submitForm(e) {
             e.preventDefault();
             alert("Thank you! Your message has been sent.");
-            e.target.reset(); // Clears the form inputs
-            closeContact(); // Closes the modal
+            e.target.reset(); 
+            closeContact(); 
         }
 
         /* --- GALLERY JAVASCRIPT --- */
