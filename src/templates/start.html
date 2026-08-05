@@ -79,6 +79,11 @@
             display: block;
         }
 
+        /* Hidden by default on desktop view */
+        .mobile-logo-text {
+            display: none;
+        }
+
         /* Wrapper for links and icons */
         .nav-wrapper {
             display: flex;
@@ -124,25 +129,21 @@
             color: var(--white) !important;
             padding: 10px 20px;
             border-radius: 30px;
-            font-weight: 600; /* Standardized weight */
+            font-weight: 600; 
             display: inline-block;
             cursor: pointer;
             white-space: nowrap;
             transition: background-color 0.3s ease, transform 0.2s ease;
-
-            /* Prevents font snapping/weight shifting during transform animations */
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             backface-visibility: hidden;
-            transform: translateZ(0); /* Forces GPU layer upfront so hover doesn't trigger a re-render */
+            transform: translateZ(0); 
         }
 
         .btn:hover {
             background-color: var(--olive-green);
             transform: translateX(-3px);
         }
-
-    
 
         /* --- TRANSLATION ICONS --- */
         .lang-icons {
@@ -338,13 +339,12 @@
         }
 
         .contact-content .modal-socials a {
-            color:  var(--navy-blue); /* Dark text for the white background */
+            color:  var(--navy-blue);
         }
 
         .modal-socials a:hover {
             color: var(--teal-water);
         }
-
 
         /* --- GALLERY MODAL STYLES --- */
         .gallery-modal {
@@ -433,7 +433,6 @@
             margin-top: 30px;
             max-width: 80%;
             overflow-x: auto;
-            /* FIX: Increased side padding to 10px so scaled border edges aren't clipped on the left or right */
             padding: 10px 10px;
             scrollbar-width: thin;
             scrollbar-color: var(--teal-water) rgba(255,255,255,0.1);
@@ -460,11 +459,8 @@
             transition: all 0.2s ease;
             flex-shrink: 0;
             display: block;
-
-            /* OPTION 3 FIX: Pre-allocate a 2px invisible border on all thumbnails */
             box-sizing: border-box;
             border: 3px solid transparent;
-
             backface-visibility: hidden;
         }
 
@@ -474,7 +470,6 @@
 
         .thumb-img.active {
             opacity: 1;
-            /* OPTION 3 FIX: Reveal active border color without shifting dimensions or clipping */
             border-color: #ffffff;
             transform: scale(1.05);
         }
@@ -514,12 +509,28 @@
                 display: block;
             }
 
+            /* Enable and style the text in the middle of mobile nav bar */
+            .mobile-logo-text {
+                display: block;
+                font-size: 0.95rem;
+                font-weight: 700;
+                color: var(--navy-blue);
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                text-align: center;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                flex-grow: 1;
+                padding: 0 10px;
+            }
+
             .hero .tagline {
                 transform: none;
             }
 
             .logo img {
-                max-height: 50px;
+                max-height: 45px;
             }
 
             .nav-container {
@@ -579,6 +590,8 @@
                 <img src="/static/index_files/MAIN_LOGO.png" alt="Offlead Adventures Logo">
             </a>
 
+            <div class="mobile-logo-text">Offlead Adventures</div>
+
             <div class="menu-toggle" id="mobile-menu">
                 <i class="fa-solid fa-bars"></i>
             </div>
@@ -610,12 +623,11 @@
       <span class="tagline" data-translate="hero-tag" style="color:#79d68f">Explore. Play. Return Happy.</span>
         <h1 data-translate="hero-title">The Ultimate Off-Lead Day Out</h1>
         <p data-translate="hero-desc">Exciting and tailored outdoor adventures for dogs in Lisbon.<br> 
-                        More than a walk. A day they’ll look forward to.<br>
                         Off Lead Adventures provides small-group outdoor experiences for dogs who need more than a
                         quick trip around the block.
                         Your dog is collected from your home, joins a carefully managed adventure in nature, enjoys safe
                         exploration, socialisation and enrichment then returns home refreshed, happy and ready to relax.
-                        Small groups. Professional care. Happy dogs.</p>
+                        More than a walk. A day they’ll look forward to.</p>
         <a onclick="openContact(event)" class="btn" data-translate="hero-btn">Book an Adventure</a>
     </section>
 
@@ -823,7 +835,6 @@
             }
         });
 
-        // Close menu when clicking outside the navigation container
         document.addEventListener('click', (e) => {
             if (navWrapper.classList.contains('active') && !navContainer.contains(e.target)) {
                 closeMobileMenu();
@@ -916,19 +927,17 @@
             contactModal.classList.remove('show');
         }
 
-        // Close when clicking outside the modal content
         contactModal.addEventListener('click', function(e) {
             if (e.target === contactModal) {
                 closeContact();
             }
         });
 
-        // Dummy submission handler
         function submitForm(e) {
             e.preventDefault();
             alert("Thank you! Your message has been sent.");
-            e.target.reset(); // Clears the form inputs
-            closeContact(); // Closes the modal
+            e.target.reset(); 
+            closeContact(); 
         }
 
     </script>

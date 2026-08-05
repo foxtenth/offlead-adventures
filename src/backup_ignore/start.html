@@ -65,6 +65,7 @@
             justify-content: space-between;
             align-items: center;
             position: relative;
+            background-color: var(--white);
         }
 
         .logo {
@@ -82,6 +83,7 @@
         .nav-wrapper {
             display: flex;
             align-items: center;
+            background-color: var(--white);
         }
 
         .nav-links {
@@ -535,6 +537,7 @@
                 padding: 20px 0;
                 box-shadow: 0 5px 15px rgba(0,0,0,0.1);
                 border-top: 1px solid #eee;
+                z-index: 1001;
             }
 
             .nav-wrapper.active {
@@ -584,7 +587,7 @@
                     <ul class="nav-links">
                         <li><a href="{{ url_for('home') }}" data-translate="nav-home"><i class="fa-solid fa-house" style="margin-right: 7px;"></i>Offlead-Adventures</a></li>                                     
                         <li><a href="{{ url_for('pet_taxi') }}" data-translate="nav-taxi">Pet Taxi</a></li>                  
-                        <li><a href="{{ url_for('home') }}#about" data-translate="nav-about">About</a></li>
+                        <li><a href="{{ url_for('about') }}" data-translate="nav-about">About</a></li>
                         <li><a onclick="openGallery(event)" data-translate="nav-gallery">Gallery</a></li>           
                         <li><a onclick="openContact(event)" class="btn" data-translate="nav-book">Get in touch</a></li>
                     </ul>
@@ -607,12 +610,11 @@
       <span class="tagline" data-translate="hero-tag" style="color:#79d68f">Explore. Play. Return Happy.</span>
         <h1 data-translate="hero-title">The Ultimate Off-Lead Day Out</h1>
         <p data-translate="hero-desc">Exciting and tailored outdoor adventures for dogs in Lisbon.<br> 
-                        More than a walk. A day they’ll look forward to.<br>
                         Off Lead Adventures provides small-group outdoor experiences for dogs who need more than a
                         quick trip around the block.
                         Your dog is collected from your home, joins a carefully managed adventure in nature, enjoys safe
                         exploration, socialisation and enrichment then returns home refreshed, happy and ready to relax.
-                        Small groups. Professional care. Happy dogs.</p>
+                        More than a walk. A day they’ll look forward to.</p>
         <a onclick="openContact(event)" class="btn" data-translate="hero-btn">Book an Adventure</a>
     </section>
 
@@ -664,7 +666,7 @@
     <div id="contactModal" class="contact-modal">
         <span class="close-contact" onclick="closeContact()">×</span>
         <div class="contact-content">
-            <h2 style="color: var(--navy-blue); margin-bottom: 20px;" data-translate="contact-title">Let's connect!</h2>
+            <h2 style="color: var(--navy-blue); margin-bottom: 20px;" data-translate="contact-title">Let's talk :)</h2>
             
             <form id="contactForm" onsubmit="submitForm(event)">
                 <div class="form-group">
@@ -752,7 +754,7 @@
                 "card4-desc": "Lleve a sus perros a citas veterinarias, restaurantes o donde desee. Servicio individualizado.",
                 "contact-title": "¿Listo para una aventura?",
                 "contact-desc": "Contáctenos hoy para organizar una reunión.",
-                "contact-btn": "Envíanios un Correo",
+                "contact-btn": "Envíanos un Correo",
                 "footer-copy": "&copy; 2026 Offlead Adventures. Todos los derechos reservados."
             },
             "pt": {
@@ -798,9 +800,17 @@
         /* --- MOBILE MENU JAVASCRIPT --- */
         const mobileMenuBtn = document.getElementById('mobile-menu');
         const navWrapper = document.getElementById('nav-wrapper');
+        const navContainer = document.querySelector('.nav-container');
         const menuIcon = mobileMenuBtn.querySelector('i');
 
-        mobileMenuBtn.addEventListener('click', () => {
+        function closeMobileMenu() {
+            navWrapper.classList.remove('active');
+            menuIcon.classList.remove('fa-xmark');
+            menuIcon.classList.add('fa-bars');
+        }
+
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             navWrapper.classList.toggle('active');
             
             if (navWrapper.classList.contains('active')) {
@@ -812,12 +822,17 @@
             }
         });
 
+        // Close menu when clicking outside the navigation container
+        document.addEventListener('click', (e) => {
+            if (navWrapper.classList.contains('active') && !navContainer.contains(e.target)) {
+                closeMobileMenu();
+            }
+        });
+
         const navLinks = document.querySelectorAll('.nav-links a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                navWrapper.classList.remove('active');
-                menuIcon.classList.remove('fa-xmark');
-                menuIcon.classList.add('fa-bars');
+                closeMobileMenu();
             });
         });
 
