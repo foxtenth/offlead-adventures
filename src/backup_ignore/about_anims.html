@@ -2,7 +2,7 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Our Story | Offlead Adventures</title>
+    <title>The Wilderness Experience | Offlead Adventures</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css">
@@ -17,7 +17,6 @@
             --white: #ffffff;
             --text-dark: #444238;
             --text-light: #f4f4f4;
-	    --accent-orange: #e67e22;
         }
 
         /* --- GLOBAL STYLES (Unchanged) --- */
@@ -41,7 +40,7 @@
         h1, h2, h3 { color: var(--navy-blue); margin-bottom: 15px; }
         h1 { font-size: 3rem; line-height: 1.2; }
         h2 { font-size: 2.2rem; text-align: center; margin-bottom: 20px; }        
-        p { margin-bottom: 15px; font-size: 1.05rem; color: #555; }
+        p { margin-bottom: 20px; font-size: 1.1rem; color: #555; }
 
         /* --- NAVIGATION (Unchanged) --- */
         header {
@@ -63,18 +62,10 @@
             background-color: var(--white);
         }
 
-        .logo { flex-shrink: 0; margin: 0px 0px; }
+        .logo { flex-shrink: 0; margin: 0px 5px; }
         .logo img { max-height: 85px; height: auto; display: block; }
-
-	/* Hidden by default on desktop view */
-        .mobile-logo-text {
-            display: none;
-        }
-
         .nav-wrapper { display: flex; align-items: center; background-color: var(--white); }
         .nav-links { display: flex; gap: 20px; list-style: none; align-items: center; }
-
-	
 
         .nav-links li a:not(.btn) {
             font-weight: 600;
@@ -136,148 +127,153 @@
         .menu-toggle { display: none; font-size: 2rem; color: var(--navy-blue); cursor: pointer; }
 
         /* ========================================= */
-        /* --- ABOUT-SPECIFIC COMPACT STYLES --- */
+        /* --- EXPERIMENTAL PAGE-SPECIFIC STYLES --- */
         /* ========================================= */
 
-        .about-editorial-hero {
+        .floating-badge {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
             background-color: var(--navy-blue);
             color: var(--white);
-            padding: 40px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            z-index: 999;
+            transform: rotate(-3deg);
+            border: 2px solid var(--teal-water);
+            animation: float 4s ease-in-out infinite;
         }
 
-        .about-editorial-hero h1 {
-            color: var(--white);
-            font-size: 3rem;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(-3deg); }
+            50% { transform: translateY(-10px) rotate(-1deg); }
+            100% { transform: translateY(0px) rotate(-3deg); }
         }
 
-        .about-editorial-hero p {
-            color: var(--teal-water);
-            font-size: 1.25rem;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* Split Screen Story Section */
-        .story-container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+        .parallax-header {
+            height: 70vh;
+            background-image: linear-gradient(rgba(31, 37, 43, 0.6), rgba(31, 37, 43, 0.9)), url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-        }
-
-        .story-text h2 {
-            text-align: left;
-            font-size: 2.2rem;
-            color: var(--accent-orange);
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        .story-text h2::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -8px;
-            width: 50px;
-            height: 3px;
-            background-color: var(--accent-orange);
-            border-radius: 2px;
-        }
-
-        .story-image {
-            position: relative;
-        }
-
-        .story-image img {
-            width: 100%;
-            height: 380px;
-            object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-        }
-
-        /* --- COMPACT GOAL BANNER --- */
-        .goal-banner {
-            background-color: var(--navy-blue);
-            color: var(--white);
-            padding: 30px 20px;
             text-align: center;
-            position: relative;
-            margin: 40px 0 0 0;
+            padding: 0 20px;
         }
 
-        .goal-banner-content {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .goal-banner i {
-            color: var(--olive-green);
-            font-size: 2rem;
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        .goal-banner p {
+        .parallax-header h1 {
             color: var(--white);
-            font-size: 1.5rem;
-            line-height: 1.4;
-            font-weight: 300;
-            font-style: italic;
-            margin-bottom: 0;
-        }
-
-        .goal-banner p strong {
-            color: var(--olive-green);
-            font-weight: 600;
-        }
-
-        /* Philosophy Callout Grid (Attached flush to banner) */
-        .philosophy-section {
-            background-color: var(--white);
-            padding: 50px 20px;
-            border-bottom: 1px solid #eaeaea;
-        }
-
-        .philosophy-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .philosophy-card {
-            background-color: var(--light-bg);
-            padding: 30px 25px;
-            border-radius: 10px;
-            border-top: 6px solid var(--teal-water);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-            transition: transform 0.3s ease;
-        }
-
-        .philosophy-card:hover {
-            transform: translateY(-4px);
-        }
-
-        .philosophy-card i {
-            font-size: 2.2rem;
-            color: var(--olive-green);
-            margin-bottom: 15px;
-        }
-
-        .philosophy-card h3 {
-            font-size: 1.3rem;
+            font-size: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
             margin-bottom: 10px;
+        }
+
+        .parallax-header p {
+            color: var(--teal-water);
+            font-size: 1.5rem;
+            font-style: italic;
+            max-width: 600px;
+        }
+
+        /* Bento Grid Layout */
+        .bento-section {
+            max-width: 1400px;
+            margin: -80px auto 80px auto; /* Pulls grid up over the parallax background */
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 300px;
+            gap: 20px;
+        }
+
+        .bento-item {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background-color: var(--navy-blue);
+        }
+
+        .bento-item:hover {
+            transform: scale(1.02);
+            z-index: 2;
+        }
+
+        .bento-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+            transition: opacity 0.3s ease, transform 0.5s ease;
+        }
+
+        .bento-item:hover img {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .bento-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(to top, rgba(31, 37, 43, 0.95), transparent);
+            color: var(--white);
+        }
+
+        .bento-content h3 {
+            color: var(--white);
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .bento-content p {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        /* Specific grid sizing */
+        .item-large { grid-column: span 2; grid-row: span 2; }
+        .item-wide { grid-column: span 2; }
+        .item-tall { grid-row: span 2; }
+
+        /* Kinetic Typography Section */
+        .kinetic-section {
+            background-color: var(--teal-water);
+            padding: 80px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            margin-bottom: 80px;
+        }
+
+        .kinetic-text {
+            font-size: 5rem;
+            font-weight: 900;
+            color: transparent;
+            -webkit-text-stroke: 2px var(--white);
+            text-transform: uppercase;
+            animation: scrollText 20s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes scrollText {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
         /* --- CONTACT & GALLERY MODAL STYLES (Unchanged) --- */
@@ -293,6 +289,7 @@
         }
         .close-contact:hover, .close-gallery:hover { color: var(--teal-water); }
 
+        /* Contact Form inner */
         .contact-content {
             background-color: var(--white); padding: 40px; border-radius: 12px; width: 90%;
             max-width: 500px; position: relative; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
@@ -307,6 +304,7 @@
         .contact-content .modal-socials a { color: var(--navy-blue); }
         .modal-socials a:hover { color: var(--teal-water); }
 
+        /* Gallery inner */
         .gallery-content { display: flex; align-items: center; justify-content: center; position: relative; width: 90%; max-width: 1000px; height: 60vh; }
         #mainGalleryImage { max-width: 100%; max-height: 100%; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); object-fit: contain; }
         .gallery-btn {
@@ -330,7 +328,7 @@
         .social-icons a { color: var(--white); font-size: 1.8rem; transition: color 0.3s ease, transform 0.3s ease; }
         .social-icons a:hover { color: var(--teal-water); transform: translateY(-3px); }
 
-        /* --- RESPONSIVE DESIGN FOR ABOUT LAYOUT --- */
+        /* --- RESPONSIVE DESIGN --- */
         @media (max-width: 1024px) {
             .menu-toggle { display: block; }
             .logo img { max-height: 50px; }
@@ -344,30 +342,11 @@
             .nav-links { flex-direction: column; width: 100%; gap: 15px; text-align: center; }
             .lang-icons { border-left: none; border-top: 1px solid #eee; padding-left: 0; padding-top: 15px; margin-left: 0; margin-top: 15px; justify-content: center; width: 100%; }
             
-		.mobile-logo-text {
-                display: block;
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
-                font-size: 1.00 rem;
-                font-weight: 700;
-                color: var(--navy-blue);
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-                text-align: center;
-                white-space: nowrap;
-                pointer-events: none; /* Allows clicks to pass through if needed */
-                max-width: 55%;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-
-            /* Responsive Story & Philosophy */
-            .story-container { grid-template-columns: 1fr; gap: 30px; margin: 30px auto; }
-            .philosophy-grid { grid-template-columns: 1fr; }
-            .about-editorial-hero h1 { font-size: 2.2rem; }
-            .goal-banner p { font-size: 1.25rem; }
-
+            /* Responsive Grid */
+            .bento-grid { grid-template-columns: 1fr; grid-auto-rows: 250px; }
+            .item-large, .item-wide, .item-tall { grid-column: span 1; grid-row: span 1; }
+            .parallax-header h1 { font-size: 2.5rem; }
+            .bento-section { margin-top: -40px; }
         }
     </style>
 </head>
@@ -378,8 +357,6 @@
             <a href="https://offlead-adventures.pt/#" class="logo">
                 <img src="/static/index_files/MAIN_LOGO.png" alt="Offlead Adventures Logo">
             </a>
-		
-		<div class="mobile-logo-text">Offlead Adventures</div>
 
             <div class="menu-toggle" id="mobile-menu">
                 <i class="fa-solid fa-bars"></i>
@@ -408,51 +385,56 @@
         </div>
     </header>
 
-    <section class="about-editorial-hero">
-        <p data-translate="about-hero-subtitle" style="letter-spacing: 1px;margin-bottom: 5px;">Behind Offlead Aventures..</p>
-        <h1 data-translate="about-hero-title">A Passion Built on Experience</h1>
-        <p data-translate="about-hero-subtitle" style="font-style: italic;">Bringing a professional, caring approach to canine enrichment in Lisbon.</p>
+    <div class="floating-badge">
+        <i class="fa-solid fa-calendar-check" style="margin-right: 8px;"></i> Booking for Fall 2026
+    </div>
+
+    <section class="parallax-header">
+        <h1 data-translate="adv-hero-title">Into The Wild</h1>
+        <p data-translate="adv-hero-subtitle">Where instinct takes the lead.</p>
     </section>
 
-    <section class="story-container">
-        <div class="story-text">
-            <h2 data-translate="about-story-title">To Lisbon's Trails</h2>
-            <p data-translate="about-story-p1">After 20 years living in the UK and running a successful dog grooming salon, Off Lead Adventures was created to bring a professional, caring approach to dog enrichment.</p>
-            <p data-translate="about-story-p2">Years of working closely with dogs and their owners have taught us that every dog is different. Some need confidence, some need stimulation, and some simply need the chance to be a dog.</p>
-        </div>
-        <div class="story-image">
-            <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Dog looking out over nature landscape">
-        </div>
-    </section>
-
-    <section class="goal-banner">
-        <div class="goal-banner-content">
-            <i class="fa-solid fa-quote-left"></i>
-            <p data-translate="about-goal-banner">Our goal is simple: Give dogs <strong>amazing experiences</strong> while giving owners <strong>complete peace of mind</strong>.</p>
-        </div>
-    </section>
-
-    <section class="philosophy-section">
-        <div class="philosophy-grid">
+    <section class="bento-section">
+        <div class="bento-grid">
             
-            <div class="philosophy-card">
-                <i class="fa-solid fa-shield-dog"></i>
-                <h3 data-translate="about-card-1-title">Selective & Safe</h3>
-                <p data-translate="about-card-1-desc">We welcome friendly, suitable dogs. By strictly capping our groups at 4 dogs maximum, we ensure close supervision and harmonious pack chemistry.</p>
+            <div class="bento-item item-large">
+                <img src="https://images.unsplash.com/photo-1544568100-847a948585b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Dog running in forest">
+                <div class="bento-content">
+                    <h3 data-translate="bento-1-title">Total Freedom</h3>
+                    <p data-translate="bento-1-desc">Safe, off-lead exploration in expansive natural environments.</p>
+                </div>
             </div>
 
-            <div class="philosophy-card">
-                <i class="fa-solid fa-compass"></i>
-                <h3 data-translate="about-card-2-title">True Enrichment</h3>
-                <p data-translate="about-card-2-desc">We look beyond basic physical exhaustion. Our adventures focus on mental stimulation, nature exploration, and safe off-lead freedom.</p>
+            <div class="bento-item">
+                <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dog sniffing">
+                <div class="bento-content">
+                    <h3 data-translate="bento-2-title">Enrichment</h3>
+                    <p data-translate="bento-2-desc">Mental stimulation over sheer exhaustion.</p>
+                </div>
             </div>
 
-            <div class="philosophy-card">
-                <i class="fa-solid fa-house-chimney-user"></i>
-                <h3 data-translate="about-card-3-title">The Complete Care</h3>
-                <p data-translate="about-card-3-desc">From our secure Renault Kangoo transport out of Benfica, Carnide, Telheiras, and Laranjeiras to our post-adventure paw rinse, we handle all the details.</p>
+            <div class="bento-item item-tall">
+                <img src="https://images.unsplash.com/photo-1534361960057-19889db9621e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dog looking at landscape">
+                <div class="bento-content">
+                    <h3 data-translate="bento-3-title">The Small Pack</h3>
+                    <p data-translate="bento-3-desc">Strictly limited to 4 dogs for harmonious socialisation.</p>
+                </div>
             </div>
 
+            <div class="bento-item item-wide">
+                <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Dog with dirty paws">
+                <div class="bento-content">
+                    <h3 data-translate="bento-4-title">Mud Welcome</h3>
+                    <p data-translate="bento-4-desc">We handle the mess. Paw rinses and towel dries included before drop-off.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="kinetic-section">
+        <div class="kinetic-text">
+            RUN SNIFF PLAY EXPLORE RETURN HAPPY • RUN SNIFF PLAY EXPLORE RETURN HAPPY • RUN SNIFF PLAY EXPLORE RETURN HAPPY • 
         </div>
     </section>
 
@@ -510,6 +492,7 @@
     </div>
 
     <script>
+        // Placeholder translation object structure 
         const translations = { "en": {}, "es": {}, "pt": {} };
 
         function translatePage(lang) {
@@ -542,7 +525,9 @@
         });
 
         document.addEventListener('click', (e) => {
-            if (navWrapper.classList.contains('active') && !navContainer.contains(e.target)) { closeMobileMenu(); }
+            if (navWrapper.classList.contains('active') && !navContainer.contains(e.target)) {
+                closeMobileMenu();
+            }
         });
 
         const navLinks = document.querySelectorAll('.nav-links a');
@@ -604,10 +589,17 @@
         });
 
         const contactModal = document.getElementById('contactModal');
-        function openContact(e) { if(e) e.preventDefault(); contactModal.classList.add('show'); }
+
+        function openContact(e) {
+            if(e) e.preventDefault();
+            contactModal.classList.add('show');
+        }
+
         function closeContact() { contactModal.classList.remove('show'); }
 
-        contactModal.addEventListener('click', function(e) { if (e.target === contactModal) { closeContact(); } });
+        contactModal.addEventListener('click', function(e) {
+            if (e.target === contactModal) { closeContact(); }
+        });
 
         function submitForm(e) {
             e.preventDefault();
