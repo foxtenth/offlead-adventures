@@ -1,7 +1,3 @@
-
-
-
-
 from flask import Flask, render_template
 
 app = Flask(__name__)
@@ -15,6 +11,11 @@ def home():
 @app.route('/pet-taxi')
 def pet_taxi():
     return render_template('pet_taxi.html')
+
+# Route to the About
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

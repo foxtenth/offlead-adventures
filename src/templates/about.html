@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Our Story | Offlead Adventures</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css">
+
+    <style>
+        /* --- COLOR PALETTE & VARIABLES (Unchanged) --- */
+        :root {
+            --navy-blue: #1f252b;
+            --olive-green: #61c378;
+            --teal-water: #61c378;
+            --light-bg: #f9faf8;
+            --white: #ffffff;
+            --text-dark: #444238;
+            --text-light: #f4f4f4;
+        }
+
+        /* --- GLOBAL STYLES (Unchanged) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* --- TYPOGRAPHY (Unchanged) --- */
+        h1, h2, h3 { color: var(--navy-blue); margin-bottom: 15px; }
+        h1 { font-size: 3rem; line-height: 1.2; }
+        h2 { font-size: 2.2rem; text-align: center; margin-bottom: 20px; }        
+        p { margin-bottom: 15px; font-size: 1.05rem; color: #555; }
+
+        /* --- NAVIGATION (Unchanged) --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.25rem 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            background-color: var(--white);
+        }
+
+        .logo { flex-shrink: 0; margin: 0px 5px; }
+        .logo img { max-height: 85px; height: auto; display: block; }
+        .nav-wrapper { display: flex; align-items: center; background-color: var(--white); }
+        .nav-links { display: flex; gap: 20px; list-style: none; align-items: center; }
+
+        .nav-links li a:not(.btn) {
+            font-weight: 600;
+            color: var(--navy-blue);
+            transition: color 0.1s ease;
+            text-transform: uppercase;
+            font-size: 1.0rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .nav-links li a:hover { color: var(--olive-green); }
+
+        .nav-links li a.btn {
+            text-transform: uppercase;
+            font-size: 1.0rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background-color 0.1s ease, color 0.1s ease, transform 0.2s ease;
+        }
+
+        .btn {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background-color: var(--olive-green);
+            color: var(--white) !important;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            display: inline-block;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            backface-visibility: hidden;
+            transform: translateZ(0); 
+        }
+
+        .btn:hover { background-color: var(--olive-green); transform: translateX(-3px); }
+
+        /* --- TRANSLATION ICONS (Unchanged) --- */
+        .lang-icons {
+            display: flex; gap: 10px; align-items: center;
+            border-left: 2px solid #eee; padding-left: 12px; margin-left: 12px;
+        }
+
+        .lang-btn {
+            background: none; border: none; font-size: 1.2rem; cursor: pointer;
+            transition: transform 0.2s ease; display: flex; align-items: center;
+        }
+
+        .lang-btn:hover { transform: scale(1.25); }
+        .flag-icon { width: 25px; height: auto; border-radius: 3px; box-shadow: 0 1px 3px rgba(0,0,0,0.2); display: block; }
+
+        /* --- MOBILE MENU TOGGLE (Unchanged) --- */
+        .menu-toggle { display: none; font-size: 2rem; color: var(--navy-blue); cursor: pointer; }
+
+        /* ========================================= */
+        /* --- ABOUT-SPECIFIC COMPACT STYLES --- */
+        /* ========================================= */
+
+        .about-editorial-hero {
+            background-color: var(--navy-blue);
+            color: var(--white);
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-editorial-hero h1 {
+            color: var(--white);
+            font-size: 3rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .about-editorial-hero p {
+            color: var(--teal-water);
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+
+        /* Split Screen Story Section */
+        .story-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .story-text h2 {
+            text-align: left;
+            font-size: 2.2rem;
+            color: var(--navy-blue);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .story-text h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 50px;
+            height: 3px;
+            background-color: var(--olive-green);
+            border-radius: 2px;
+        }
+
+        .story-image {
+            position: relative;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+
+        /* --- COMPACT GOAL BANNER --- */
+        .goal-banner {
+            background-color: var(--navy-blue);
+            color: var(--white);
+            padding: 45px 20px;
+            text-align: center;
+            position: relative;
+            margin: 40px 0 0 0;
+        }
+
+        .goal-banner-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .goal-banner i {
+            color: var(--olive-green);
+            font-size: 2rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .goal-banner p {
+            color: var(--white);
+            font-size: 1.5rem;
+            line-height: 1.4;
+            font-weight: 300;
+            font-style: italic;
+            margin-bottom: 0;
+        }
+
+        .goal-banner p strong {
+            color: var(--olive-green);
+            font-weight: 600;
+        }
+
+        /* Philosophy Callout Grid (Attached flush to banner) */
+        .philosophy-section {
+            background-color: var(--white);
+            padding: 50px 20px;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .philosophy-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .philosophy-card {
+            background-color: var(--light-bg);
+            padding: 30px 25px;
+            border-radius: 10px;
+            border-top: 4px solid var(--teal-water);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease;
+        }
+
+        .philosophy-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .philosophy-card i {
+            font-size: 2.2rem;
+            color: var(--olive-green);
+            margin-bottom: 15px;
+        }
+
+        .philosophy-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        /* --- CONTACT & GALLERY MODAL STYLES (Unchanged) --- */
+        .contact-modal, .gallery-modal {
+            display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(44, 54, 62, 0.95); flex-direction: column; justify-content: center;
+            align-items: center; backdrop-filter: blur(5px);
+        }
+        .contact-modal.show, .gallery-modal.show { display: flex; }
+        .close-contact, .close-gallery {
+            position: absolute; top: 20px; right: 30px; color: var(--white); font-size: 45px;
+            font-weight: bold; cursor: pointer; z-index: 2001; transition: color 0.3s ease;
+        }
+        .close-contact:hover, .close-gallery:hover { color: var(--teal-water); }
+
+        .contact-content {
+            background-color: var(--white); padding: 40px; border-radius: 12px; width: 90%;
+            max-width: 500px; position: relative; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group input, .form-group textarea {
+            width: 100%; padding: 12px 15px; border: 1px solid #ccc; border-radius: 8px;
+            font-size: 1rem; outline: none; transition: border-color 0.3s ease; font-family: inherit;
+        }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--olive-green); }
+        .modal-socials { margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; }
+        .contact-content .modal-socials a { color: var(--navy-blue); }
+        .modal-socials a:hover { color: var(--teal-water); }
+
+        .gallery-content { display: flex; align-items: center; justify-content: center; position: relative; width: 90%; max-width: 1000px; height: 60vh; }
+        #mainGalleryImage { max-width: 100%; max-height: 100%; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); object-fit: contain; }
+        .gallery-btn {
+            background: rgba(255, 255, 255, 0.1); border: none; color: var(--white); font-size: 2rem;
+            width: 50px; height: 50px; border-radius: 50%; cursor: pointer; position: absolute;
+            top: 50%; transform: translateY(-50%); transition: all 0.3s ease; display: flex; justify-content: center; align-items: center;
+        }
+        .gallery-btn:hover { background: var(--olive-green); }
+        .gallery-prev { left: -70px; } .gallery-next { right: -70px; }
+        .thumbnail-roller { display: flex; gap: 15px; margin-top: 30px; max-width: 80%; overflow-x: auto; padding: 10px; scrollbar-width: thin; scrollbar-color: var(--teal-water) rgba(255,255,255,0.1); }
+        .thumbnail-roller::-webkit-scrollbar { height: 8px; }
+        .thumbnail-roller::-webkit-scrollbar-track { background: rgba(255,255,255,0.1); border-radius: 4px; }
+        .thumbnail-roller::-webkit-scrollbar-thumb { background: var(--teal-water); border-radius: 4px; }
+        .thumb-img { height: 80px; width: 120px; object-fit: cover; cursor: pointer; opacity: 0.5; transition: all 0.2s ease; flex-shrink: 0; box-sizing: border-box; border: 3px solid transparent; }
+        .thumb-img:hover { opacity: 0.8; }
+        .thumb-img.active { opacity: 1; border-color: #ffffff; transform: scale(1.05); }
+
+        /* --- FOOTER & SOCIALS (Unchanged) --- */
+        footer { background-color: var(--navy-blue); color: var(--white); text-align: center; padding: 10px 5px; }
+        .social-icons { margin: 10px 0; display: flex; justify-content: center; gap: 30px; }
+        .social-icons a { color: var(--white); font-size: 1.8rem; transition: color 0.3s ease, transform 0.3s ease; }
+        .social-icons a:hover { color: var(--teal-water); transform: translateY(-3px); }
+
+        /* --- RESPONSIVE DESIGN FOR ABOUT LAYOUT --- */
+        @media (max-width: 1024px) {
+            .menu-toggle { display: block; }
+            .logo img { max-height: 50px; }
+            .nav-container { padding: 5px 15px; }
+            .nav-wrapper {
+                display: none; flex-direction: column; position: absolute; top: 100%; left: 0;
+                width: 100%; background-color: var(--white); padding: 20px 0; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                border-top: 1px solid #eee; z-index: 1001;
+            }
+            .nav-wrapper.active { display: flex; }
+            .nav-links { flex-direction: column; width: 100%; gap: 15px; text-align: center; }
+            .lang-icons { border-left: none; border-top: 1px solid #eee; padding-left: 0; padding-top: 15px; margin-left: 0; margin-top: 15px; justify-content: center; width: 100%; }
+            
+            /* Responsive Story & Philosophy */
+            .story-container { grid-template-columns: 1fr; gap: 30px; margin: 30px auto; }
+            .philosophy-grid { grid-template-columns: 1fr; }
+            .about-editorial-hero h1 { font-size: 2.2rem; }
+            .goal-banner p { font-size: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="https://offlead-adventures.pt/#" class="logo">
+                <img src="/static/index_files/MAIN_LOGO.png" alt="Offlead Adventures Logo">
+            </a>
+
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <div class="nav-wrapper" id="nav-wrapper">
+                    <ul class="nav-links">
+                        <li><a href="{{ url_for('home') }}" data-translate="nav-home"><i class="fa-solid fa-house" style="margin-right: 7px;"></i>Offlead-Adventures</a></li>                                     
+                        <li><a href="{{ url_for('pet_taxi') }}" data-translate="nav-taxi">Pet Taxi</a></li>                  
+                        <li><a href="{{ url_for('about') }}" data-translate="nav-about">About</a></li>
+                        <li><a onclick="openGallery(event)" data-translate="nav-gallery">Gallery</a></li>           
+                        <li><a onclick="openContact(event)" class="btn" data-translate="nav-book">Get in touch</a></li>
+                    </ul>
+                <div class="lang-icons">
+                    <button class="lang-btn" onclick="translatePage('pt')" title="Português">
+                        <span class="fi fi-pt"></span>
+                    </button>
+                    <button class="lang-btn" onclick="translatePage('es')" title="Español">
+                        <span class="fi fi-es"></span>
+                    </button>
+                    <button class="lang-btn" onclick="translatePage('en')" title="English">
+                        <span class="fi fi-gb"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="about-editorial-hero">
+        <h1 data-translate="about-hero-title">A Passion Built on Experience</h1>
+        <p data-translate="about-hero-subtitle">Bringing a professional, caring approach to canine enrichment in Lisbon.</p>
+    </section>
+
+    <section class="story-container">
+        <div class="story-text">
+            <h2 data-translate="about-story-title">From the UK to Lisbon's Trails</h2>
+            <p data-translate="about-story-p1">After 20 years living in the UK and running a successful dog grooming salon, Off Lead Adventures was created to bring a professional, caring approach to dog enrichment.</p>
+            <p data-translate="about-story-p2">Years of working closely with dogs and their owners have taught us that every dog is different. Some need confidence, some need stimulation, and some simply need the chance to be a dog.</p>
+        </div>
+        <div class="story-image">
+            <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Dog looking out over nature landscape">
+        </div>
+    </section>
+
+    <section class="goal-banner">
+        <div class="goal-banner-content">
+            <i class="fa-solid fa-quote-left"></i>
+            <p data-translate="about-goal-banner">Our goal is simple: Give dogs <strong>amazing experiences</strong> while giving owners <strong>complete peace of mind</strong>.</p>
+        </div>
+    </section>
+
+    <section class="philosophy-section">
+        <div class="philosophy-grid">
+            
+            <div class="philosophy-card">
+                <i class="fa-solid fa-shield-dog"></i>
+                <h3 data-translate="about-card-1-title">Selective & Safe</h3>
+                <p data-translate="about-card-1-desc">We welcome friendly, suitable dogs. By strictly capping our groups at 4 dogs maximum, we ensure close supervision and harmonious pack chemistry.</p>
+            </div>
+
+            <div class="philosophy-card">
+                <i class="fa-solid fa-compass"></i>
+                <h3 data-translate="about-card-2-title">True Enrichment</h3>
+                <p data-translate="about-card-2-desc">We look beyond basic physical exhaustion. Our adventures focus on mental stimulation, nature exploration, and safe off-lead freedom.</p>
+            </div>
+
+            <div class="philosophy-card">
+                <i class="fa-solid fa-house-chimney-user"></i>
+                <h3 data-translate="about-card-3-title">The Complete Care</h3>
+                <p data-translate="about-card-3-desc">From our secure Renault Kangoo transport out of Benfica, Carnide, Telheiras, and Laranjeiras to our post-adventure paw rinse, we handle all the details.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #FFFFFF" data-translate="contact-title">Ready for an adventure?</h3>
+            <p style="color: #FFFFFF; margin-bottom: 15px;" data-translate="contact-desc">Contact us today to arrange a meet-and-greet.</p>
+            <a href="mailto:offlead.adventures@gmail.com" class="btn" style="background-color: var(--olive-green);" data-translate="contact-btn">Email Us</a>
+        </div>
+        
+        <div class="social-icons">
+            <a href="https://wa.me/" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://facebook.com/" target="_blank" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://instagram.com/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://google.com/" target="_blank" title="Google Business"><i class="fa-brands fa-google"></i></a>
+        </div>
+
+        <p style="color: #FFFFFF; font-size: 1.0rem; margin-bottom: 0px; border: 0px" data-translate="footer-copy">© 2026 Offlead Adventures. All rights reserved.</p>
+    </footer>
+
+    <div id="contactModal" class="contact-modal">
+        <span class="close-contact" onclick="closeContact()">×</span>
+        <div class="contact-content">
+            <h2 style="color: var(--navy-blue); margin-bottom: 20px;" data-translate="contact-title">Let's talk :)</h2>
+            
+            <form id="contactForm" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <input type="text" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Tell us about your dog..." rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%; border: none;">Send Message</button>
+            </form>
+
+            <div class="social-icons modal-socials">
+                <a href="https://wa.me/" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://facebook.com/" target="_blank" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://instagram.com/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="galleryModal" class="gallery-modal">
+        <span class="close-gallery" onclick="closeGallery()">×</span>
+        <div class="gallery-content">
+            <button class="gallery-btn gallery-prev" onclick="changeImage(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+            <img id="mainGalleryImage" src="https://offlead-adventures.pt/" alt="Offlead Adventures Gallery">
+            <button class="gallery-btn gallery-next" onclick="changeImage(1)"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div class="thumbnail-roller" id="thumbnailRoller"></div>
+    </div>
+
+    <script>
+        const translations = { "en": {}, "es": {}, "pt": {} };
+
+        function translatePage(lang) {
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) { el.innerHTML = translations[lang][key]; }
+            });
+        }
+
+        const mobileMenuBtn = document.getElementById('mobile-menu');
+        const navWrapper = document.getElementById('nav-wrapper');
+        const navContainer = document.querySelector('.nav-container');
+        const menuIcon = mobileMenuBtn.querySelector('i');
+
+        function closeMobileMenu() {
+            navWrapper.classList.remove('active');
+            menuIcon.classList.remove('fa-xmark');
+            menuIcon.classList.add('fa-bars');
+        }
+
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navWrapper.classList.toggle('active');
+            if (navWrapper.classList.contains('active')) {
+                menuIcon.classList.remove('fa-bars'); menuIcon.classList.add('fa-xmark');
+            } else {
+                menuIcon.classList.remove('fa-xmark'); menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (navWrapper.classList.contains('active') && !navContainer.contains(e.target)) { closeMobileMenu(); }
+        });
+
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => { link.addEventListener('click', () => { closeMobileMenu(); }); });
+
+        const galleryImages = [
+            "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1000&q=80",
+            "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1000&q=80",
+            "https://images.unsplash.com/photo-1534361960057-19889db9621e?w=1000&q=80",
+            "https://images.unsplash.com/photo-1552053831-71594a27632d?w=1000&q=80"
+        ];
+        
+        let currentImageIndex = 0;
+        const modal = document.getElementById('galleryModal');
+        const mainImage = document.getElementById('mainGalleryImage');
+        const roller = document.getElementById('thumbnailRoller');
+        let thumbnailsRendered = false;
+
+        function openGallery(e) {
+            if(e) e.preventDefault();
+            modal.classList.add('show');
+            if(!thumbnailsRendered) { renderThumbnails(); thumbnailsRendered = true; }
+            updateGallery(0);
+        }
+
+        function closeGallery() { modal.classList.remove('show'); }
+
+        function changeImage(direction) {
+            let newIndex = currentImageIndex + direction;
+            if (newIndex >= galleryImages.length) newIndex = 0; 
+            if (newIndex < 0) newIndex = galleryImages.length - 1; 
+            updateGallery(newIndex);
+        }
+
+        function updateGallery(index) {
+            currentImageIndex = index;
+            mainImage.src = galleryImages[index];
+            const thumbs = document.querySelectorAll('.thumb-img');
+            thumbs.forEach((t, i) => {
+                if(i === index) {
+                    t.classList.add('active');
+                    t.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                } else { t.classList.remove('active'); }
+            });
+        }
+
+        function renderThumbnails() {
+            roller.innerHTML = '';
+            galleryImages.forEach((src, index) => {
+                const img = document.createElement('img');
+                img.src = src; img.className = 'thumb-img';
+                img.onclick = () => updateGallery(index);
+                roller.appendChild(img);
+            });
+        }
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal || e.target.classList.contains('gallery-content')) { closeGallery(); }
+        });
+
+        const contactModal = document.getElementById('contactModal');
+        function openContact(e) { if(e) e.preventDefault(); contactModal.classList.add('show'); }
+        function closeContact() { contactModal.classList.remove('show'); }
+
+        contactModal.addEventListener('click', function(e) { if (e.target === contactModal) { closeContact(); } });
+
+        function submitForm(e) {
+            e.preventDefault();
+            alert("Thank you! Your message has been sent.");
+            e.target.reset(); closeContact(); 
+        }
+    </script>
+</body></html>
