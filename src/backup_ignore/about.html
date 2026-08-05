@@ -62,10 +62,18 @@
             background-color: var(--white);
         }
 
-        .logo { flex-shrink: 0; margin: 0px 5px; }
-        .logo img { max-height: 85px; height: auto; display: block; }
+        .logo { flex-shrink: 0; margin: 0px 0px; }
+        .logo img { max-height: 50px; height: auto; display: block; }
+
+	/* Hidden by default on desktop view */
+        .mobile-logo-text {
+            display: none;
+        }
+
         .nav-wrapper { display: flex; align-items: center; background-color: var(--white); }
         .nav-links { display: flex; gap: 20px; list-style: none; align-items: center; }
+
+	
 
         .nav-links li a:not(.btn) {
             font-weight: 600;
@@ -336,11 +344,30 @@
             .nav-links { flex-direction: column; width: 100%; gap: 15px; text-align: center; }
             .lang-icons { border-left: none; border-top: 1px solid #eee; padding-left: 0; padding-top: 15px; margin-left: 0; margin-top: 15px; justify-content: center; width: 100%; }
             
+		.mobile-logo-text {
+                display: block;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 1.00 rem;
+                font-weight: 700;
+                color: var(--navy-blue);
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                text-align: center;
+                white-space: nowrap;
+                pointer-events: none; /* Allows clicks to pass through if needed */
+                max-width: 55%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
             /* Responsive Story & Philosophy */
             .story-container { grid-template-columns: 1fr; gap: 30px; margin: 30px auto; }
             .philosophy-grid { grid-template-columns: 1fr; }
             .about-editorial-hero h1 { font-size: 2.2rem; }
             .goal-banner p { font-size: 1.25rem; }
+
         }
     </style>
 </head>
@@ -351,6 +378,8 @@
             <a href="https://offlead-adventures.pt/#" class="logo">
                 <img src="/static/index_files/MAIN_LOGO.png" alt="Offlead Adventures Logo">
             </a>
+		
+		<div class="mobile-logo-text">Offlead Adventures</div>
 
             <div class="menu-toggle" id="mobile-menu">
                 <i class="fa-solid fa-bars"></i>
